@@ -30,3 +30,7 @@
 .rr{
   @apply rounded-[5px] ;
 }
+
+.button1{
+  @apply h-[60px] rr uppercase text-[14px] bg-orange-500 text-white px-[20px] font-semibold;
+}

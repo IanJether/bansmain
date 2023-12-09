@@ -15,10 +15,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={` ${inter.className}`}>
-        <div className=' mt-[85px]'>
+        <div className=' mt-[85px] lg:mt-[10vh]'>
           {children}
         </div>
-        <Navbar/>
+        {/* <Navbar/> */}
 
       </body>
       {/* <Navbar/> */}
