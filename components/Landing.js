@@ -148,7 +148,7 @@ function Landing() {
 
             <div className="h-[1150px] lg:h-[92vh] bg-gray-700 relative">
 
-                <div className="absolute top-[0px] h-full w-full flex flex-col gap-[35px] pad py-[50px] lg:py-[150px] text-white">
+                <div className="absolute top-[0px] h-full w-full flex flex-col gap-[35px] pad py-[50px]  lg:justify-center text-white">
                     <h2 className="text-[28px] font-semibold ">What We <span className="text-orange-500">Offer</span> Here</h2>
                     <p className="text-neutral-200 lg:w-[50%]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae soluta quibusdam illum dicta aspernatur consequuntur corporis! Tempora harum, veritatis dicta assumenda.</p>
                     <div className="flex flex-col lg:flex-row mt-[20px] gap-[40px]">

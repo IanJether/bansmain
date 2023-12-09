@@ -1387,6 +1387,10 @@ video {
     align-items: center;
   }
 
+  .lg\:justify-center {
+    justify-content: center;
+  }
+
   .lg\:justify-between {
     justify-content: space-between;
   }
