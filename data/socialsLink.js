@@ -10,12 +10,12 @@ export const socialLinks = [
     },
     {
         icon: faEnvelope,
-        text: "info@nationalaviationcollege.com",
+        text: "info@bansprotection.co.ke",
         link: ""
     },
     {
         icon: faLocationPin,
-        text: "Megenagna, Meseret defar Building. Addis Ababa",
+        text: "KICC building, 5th Floor",
         link: ""
     },
     {

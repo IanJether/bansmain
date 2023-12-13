@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 
+
+body{
+  font-family: 'Poppins', sans-serif;
+}
+
+
+
 .noSelect {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
@@ -24,7 +31,7 @@
 }
 
 .pad{
-  @apply px-[5%] ;
+  @apply px-[5%] lg:px-[9%];
 }
 
 .rr{

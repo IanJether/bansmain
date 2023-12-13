@@ -1,7 +1,7 @@
-import Navbar from "@/common/Navbar";
+import Navbar from "@/components/common/Navbar";
 import { servicesList } from "@/data/services";
 import Stats from "@/data/stats";
-import { faAngleLeft, faAngleRight, faArrowRight, faBars, faCalendar, faEnvelope, faPhone, faSchool, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft, faAngleRight, faArrowRight, faBars, faCalendar, faEnvelope, faPhone, faSchool, faUser, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import Image from "next/image";
@@ -9,6 +9,8 @@ import Link from "next/link";
 import { socialLinks } from "@/data/socialsLink";
 import { NavbarList } from "@/data/NavbarList";
 import { getLink } from "@/data/getLink";
+import { supportDetails } from "@/data/supportdetails";
+import { TeamList } from "@/data/team";
 
 function Landing() {
     return (
@@ -79,11 +81,11 @@ function Landing() {
             {/* Section 1  */}
 
             <div className="sectionone relative h-[550px] lg:h-[90vh] mb-[230px] lg:mb-[0] bg-gray-700">
-
-                <div className="absolute top-[0px] h-full w-full flex flex-col gap-[30px] justify-center pad">
-                    <h1 className="text-[30px] lg:text-[40px] lg:w-[50%] lg:leading-[45px] text-white">GROW YOUR BUSINESS MORE SECURE</h1>
-                    <p className="text-[16px] text-white lg:w-[40%]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur perspiciatis rerum, </p>
-                    <div className="flex  gap-[20px]">
+                <Image className="h-full w-full object-cover filter brightness-[74%]" height={2000} width={2000} alt="" src="/images/three.jpg" />
+                <div className="absolute top-[0px] h-full w-full flex flex-col gap-[20px] lg:gap-[30px] justify-center pad">
+                    <h1 className="text-[30px] lg:text-[40px] font-semibold lg:w-[50%] lg:leading-[45px] capitalize text-white">Grow Your business more secure</h1>
+                    <p className="text-[16px] font-semibold text-white lg:w-[40%]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur perspiciatis rerum, </p>
+                    <div className="flex mt-[5px] gap-[20px]">
                         <button className="h-[60px] rr uppercase text-[14px] text-white px-[20px] border border-[2px] border-orange-500 font-semibold">Contact Us</button>
                         <button className="button1">Services</button>
                     </div>
@@ -91,7 +93,7 @@ function Landing() {
 
                 <div className="absolute lg:hidden bottom-[-235px] pad ">
                     <div className="rr flex flex-col gap-[17px] justify-center border-b-[4px] border-orange-500  bg-white shadow-md h-[270px] p-[20px] text-center">
-                        <span className="text-orange-500 text-[30px]"> <FontAwesomeIcon className="" icon={faSchool} /> </span>
+                        <span className="text-orange-500 text-[36px]"> <FontAwesomeIcon className="" icon={faUserCircle} /> </span>
                         <h3 className="font-semibold text-[20px]">24/7 Client Support</h3>
                         <p className="text-[16px] text-neutral-700">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam soluta suscipit ullam. Labore, nesciunt ipsa. Est soluta </p>
                     </div>
@@ -103,12 +105,12 @@ function Landing() {
             {/* sectionone  */}
 
             <div className="hidden lg:flex pad justify-between py-[40px]">
-                {servicesList.map((items, index) => {
+                {supportDetails.map((items, index) => {
 
                     return (
                         <div className="rr flex flex-col border-t gap-[17px] w-[26vw] justify-center border-b-[4px] border-orange-500  bg-white shadow-md h-[270px] p-[20px] text-center">
-                            <span className="text-orange-500 text-[30px]"> <FontAwesomeIcon className="" icon={faSchool} /> </span>
-                            <h3 className="font-semibold text-[20px]">24/7 Client Support</h3>
+                            <span className="text-orange-500 text-[30px]"> <FontAwesomeIcon className="" icon={items.image} /> </span>
+                            <h3 className="font-semibold text-[20px]">{items.title}</h3>
                             <p className="text-[16px] text-neutral-700">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam soluta suscipit ullam. Labore, nesciunt ipsa. Est soluta </p>
                         </div>
                     )
@@ -130,7 +132,7 @@ function Landing() {
 
                             return (
                                 <div key={index} className="mappedStat flex flex-col lg:items-center gap-[px]">
-                                    <p className="font-bold text-[35px]">{items.number}</p>
+                                    <p className="font-bold text-[35px]">{items.number}+</p>
                                     <p className="font-semibold text-[18px]">{items.name}</p>
                                 </div>
                             )
@@ -138,8 +140,8 @@ function Landing() {
                     </div>
                 </div>
 
-                <div className="h-[300px] w-full lg:h-[60vh] lg:w-[50%] rr bg-gray-700">
-
+                <div className="h-[300px] overflow-hidden w-full lg:h-[60vh] lg:w-[50%] rr bg-gray-700">
+                    <Image className="h-full w-full object-cover" height={2000} width={2000} alt="" src="/images/one.jpg" />
                 </div>
 
             </div>
@@ -147,7 +149,7 @@ function Landing() {
             {/* section 3  */}
 
             <div className="h-[1150px] lg:h-[92vh] bg-gray-700 relative">
-
+                <Image className="h-full w-full object-cover filter brightness-[38%]" height={2000} width={2000} alt="" src="/images/four.jpg" />
                 <div className="absolute top-[0px] h-full w-full flex flex-col gap-[35px] pad py-[50px]  lg:justify-center text-white">
                     <h2 className="text-[28px] font-semibold ">What We <span className="text-orange-500">Offer</span> Here</h2>
                     <p className="text-neutral-200 lg:w-[50%]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae soluta quibusdam illum dicta aspernatur consequuntur corporis! Tempora harum, veritatis dicta assumenda.</p>
@@ -155,7 +157,7 @@ function Landing() {
                         {servicesList.map((items, index) => {
 
                             return (
-                                <div key={index} className="mappedServices bg-gray-100 rr p-[20px] h-[234px] flex ">
+                                <div key={index} className="mappedServices bg-opacity-[85%] bg-gray-100 rr p-[20px] h-[234px] flex ">
                                     <div className="w-[15%] text-[30px] text-blue-800">
                                         <FontAwesomeIcon icon={items.icon} />
                                     </div>
@@ -179,16 +181,16 @@ function Landing() {
                 <p className="text-neutral-700 lg:w-[50%] lg:mx-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore voluptatem Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus eius sunt dignissimos </p>
 
                 <div className="flex flex-col lg:flex-row lg:justify-between items-center gap-[20px] mt-[20px]">
-                    {servicesList.map((items, index) => {
+                    {TeamList.map((items, index) => {
 
                         return (
-                            <div key={index} className="mappedteam flex flex-col items-center w-[95%] lg:w-[23vw]">
-                                <div className="h-[300px] rr w-[85%] bg-gray-800">
-
+                            <div key={index} className="mappedteam flex flex-col items-center w-[95%] lg:w-[22vw]">
+                                <div className="h-[350px] overflow-hidden rr w-[85%] bg-gray-800">
+                                    <Image className="h-full w-full object-cover" height={500} width={500} src={items.image} alt="" />
                                 </div>
                                 <div className="h-[100px] w-[101%] border-b-[4px] border-orange-500 flex flex-col gap-[2px] items-center justify-center rr bg-gray-200 mt-[-30px]">
-                                    <h3 className="font-semibold text-[24px]">Edewait Eric</h3>
-                                    <p className="text-[14px] font-semibold ">CEO & Director</p>
+                                    <h3 className="font-semibold text-[24px]">{items.name}</h3>
+                                    <p className="text-[14px] font-semibold ">{items.position}</p>
                                 </div>
 
                             </div>
@@ -200,8 +202,8 @@ function Landing() {
             {/* section five  */}
 
             <div className="relative h-[750px] lg:h-[90vh]">
-
-                <div className="section5 absolute top-[0px] h-full w-full flex flex-col lg:flex-row lg:items-center gap-[70px] bg-gray-700 py-[70px] pad text-white">
+                <Image className="h-full w-full object-cover filter brightness-[35%]" height={2000} width={2000} alt="" src="/images/six.jpg" />
+                <div className="section5 absolute top-[0px] h-full w-full flex flex-col lg:flex-row lg:items-center gap-[70px]  py-[70px] pad text-white">
 
                     <div className="flex flex-col gap-[15px] lg:gap-[23px] lg:w-[40%]">
                         <h3 className="text-[15px] font-semibold text-orange-500">What people say about Us</h3>
@@ -237,7 +239,7 @@ function Landing() {
                     {servicesList.map((items, index) => {
 
                         return (
-                            <div key={index} className="mappednews rr h-[400px] lg:h-[55vh] lg:w-[25vw] overflow-hidden">
+                            <div key={index} className="mappednews rr h-[400px] lg:h-[55vh] lg:w-[23vw] overflow-hidden">
                                 <div className="h-[50%]  bg-gray-700">
 
                                 </div>
@@ -271,7 +273,7 @@ function Landing() {
 
                         <div className="footer1 overflow-hidden cursor-pointer flex flex-col gap-[10px] lg:gap-[15px] lg:w-[30%]">
                             <div className="div flex items-center gap-[5px] mb-[15px] lg:mb-[5px] bg-teal-5 font-semibold text-primary">
-                                <Image priority className="h-full bg-teal-500 w-[90px] object-contain" height={200} width={200} src="/images/logo/logosvg.svg" alt="" />
+                                <Image priority className="h-full w-[90px] object-contain" height={200} width={200} src="/images/logo/logosvg.svg" alt="" />
                                 <h1 className="logotext text-[14px] text-[15px] text-sec font-semibold uppercase">Bans Protection</h1>
                             </div>
                             {socialLinks.filter((items, index) => index < 3).map((items, index) => {
