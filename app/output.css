@@ -688,6 +688,10 @@ video {
   height: 350px;
 }
 
+.h-\[90\%\] {
+  height: 90%;
+}
+
 .min-h-\[10vh\] {
   min-height: 10vh;
 }

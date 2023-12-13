@@ -35,8 +35,8 @@ function Landing() {
 
                     <div className="flex bg-white justify-between items-center pad h-[55px] shadow-md">
 
-                        <div className="font-semibold">
-                            <h2>LOGO</h2>
+                        <div className="font-semibold h-[90%]">
+                        <Image className="h-full w-full object-contain" height={400} width={400} src="/images/logo.png" alt="" />
                         </div>
                         <div className="text-[18px]">
                             <FontAwesomeIcon icon={faBars} />
@@ -59,8 +59,8 @@ function Landing() {
 
                     </div>
                     <div className="h-[60%] bg-white pad flex justify-between items-center">
-                        <div>
-                            <h2 className="font-semibold ">LOGO</h2>
+                        <div className="h-[90%]">
+                            <Image className="h-full w-full object-contain" height={400} width={400} src="/images/logo.png" alt="" />
                         </div>
                         <div className="flex justify-between w-[50%]">
                             {NavbarList.map((items, index) => {
