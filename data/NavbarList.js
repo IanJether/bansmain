@@ -15,19 +15,19 @@ export const NavbarList = [
     },
     {
         name: "Services",
-        link: "/academics",
+        link: "/services",
         drop: "academics",
     },
     {
         name: "Blogs",
-        link: "/admissions",
+        link: "/blogs",
         drop: "admissions",
     },
-    {
-        name: "contact us",
-        link: "/courses",
-        drop: "courses",
-    },
+    // {
+    //     name: "contact us",
+    //     link: "",
+    //     drop: "courses",
+    // },
     // {
     //     name: "gallery",
     //     link: "/gallery",

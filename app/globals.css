@@ -8,6 +8,10 @@ body{
   font-family: 'Poppins', sans-serif;
 }
 
+.inp{
+  @apply h-[40px] w-full  focus:bg-gray-100 rr border-b-2 border-gray-200 mt-[5px] px-[10px] outline-none focus:border-b focus:border-orange-500 ;
+}
+
 
 
 .noSelect {
