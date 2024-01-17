@@ -12,6 +12,15 @@ body{
   @apply h-[40px] w-full  focus:bg-gray-100 rr border-b-2 border-gray-200 mt-[5px] px-[10px] outline-none focus:border-b focus:border-orange-500 ;
 }
 
+.inputlogin{
+  @apply border-b border-neutral-400  outline-none focus:bg-neutral-100 h-[50px] 
+}
+.labellogin{
+  @apply text-[15px] text-neutral-500 font-semibold;
+}
+
+
+
 
 
 .noSelect {

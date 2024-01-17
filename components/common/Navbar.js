@@ -1,5 +1,5 @@
 import { NavbarList } from "@/data/NavbarList";
-import { faBars, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faEnvelope, faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
@@ -38,17 +38,23 @@ const Navbar = () => {
 
             </div>
 
-            <div className="desktopnav hidden z-50 lg:flex flex-col fixed top-[0px] w-[100vw] shadow-xl min-h-[10vh] h-[100px]">
-                <div className="bg-gray-700 pad flex items-center justify-start gap-[20px] text-[12px] text-orange-500 h-[40%]">
-                    <div className="flex gap-[8px] items-center">
-                        <FontAwesomeIcon icon={faPhone} />
-                        <p className="text-white"> 0712345678 </p>
-                    </div>
-                    <div className="flex gap-[8px] items-center">
-                        <FontAwesomeIcon icon={faEnvelope} />
-                        <p className="text-white"> info@bansprotection.co.ke </p>
-                    </div>
+            <div className="desktopnav hidden z-50 lg:flex flex-col fixed top-[0px] w-[100vw] shadow-md min-h-[10vh] h-[100px]">
+                <div className="flex justify-between pad bg-gray-700 h-[40%] w-full">
+                    <div className=" flex items-center justify-start gap-[20px] text-[12px] text-orange-500 h-full">
+                        <div className="flex gap-[8px] items-center">
+                            <FontAwesomeIcon icon={faPhone} />
+                            <p className="text-white"> 0712345678 </p>
+                        </div>
+                        <div className="flex gap-[8px] items-center">
+                            <FontAwesomeIcon icon={faEnvelope} />
+                            <p className="text-white"> info@bansprotection.co.ke </p>
+                        </div>
 
+                    </div>
+                    <div className="flex gap-[8px] items-center">
+                        <FontAwesomeIcon className="text-orange-500" icon={faUser} />
+                       <Link href="/login"> <p className="text-white hover:text-orange-500 hover:underline"> login </p> </Link>
+                    </div>
                 </div>
                 <div className="h-[60%] bg-white pad flex justify-between items-center">
                     <div className="h-[90%]">
@@ -59,7 +65,7 @@ const Navbar = () => {
 
                             return (
                                 <div key={index} className="mappednavbar capitalize font-semibold">
-                                   <Link href={items.link}> <p>{items.name}</p> </Link>
+                                    <Link href={items.link}> <p>{items.name}</p> </Link>
                                 </div>
                             )
                         })}
@@ -69,7 +75,7 @@ const Navbar = () => {
                     </div>
 
                 </div>
-               
+
 
             </div>
         </div>

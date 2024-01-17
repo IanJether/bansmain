@@ -33,7 +33,7 @@ function BlogsComp() {
                                     <div className="text-[15px] font-bold text-stone-600"><p>{items.date}</p></div>
                                     <div className="text-[16px] font-semibold text-primary1"><h3>{items.title}</h3></div>
                                     <div className="text-[15px]"><p>{items.description} Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt rem voluptate dignissimos sit obcaecati voluptatem, modi eligendi quasi soluta dolore magni veniam ex quos? Repellat quae fuga sint repudiandae omnis!</p></div>
-                                    <div><p className="text-[15px] font-semibold text-orange-500 hover:underline">Read More <span><FontAwesomeIcon icon={faArrowRight} /></span></p></div>
+                                    <div ><p className="text-[15px] font-semibold text-orange-500 hover:underline">Read More <span><FontAwesomeIcon icon={faArrowRight} /></span></p></div>
                                 </div>
                             </div> </Link>
                         )

@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
       </Head>
       <body className={` ${inter.className}`}>
         <Navbar />
-        <div className='lg:mt-[10vh]'>
+        <div className='mt-[85px] lg:mt-[10vh]'>
           {children}
         </div>
 
