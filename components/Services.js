@@ -8,7 +8,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 function ServicesComp() {
     return (
-        <div className='ServicesComp'>
+        <div className='ServicesComp topspace'>
             <Header page="Services" pagehead="What we do" />
 
             <div className="flex flex-wrap justify-betwee pad gap-[35px] lg:w-full py-[60px] lg:py-[100px]">

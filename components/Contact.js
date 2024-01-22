@@ -11,7 +11,7 @@ function ContactComp() {
     const mySocialOrderList2 = [0, 1, 2, 3, 4];
 
     return (
-        <div className='ContactComp bg-gray-100'>
+        <div className='ContactComp topspace bg-gray-100'>
 
             <Header page="Contact" pagehead="Contact Us" />
 

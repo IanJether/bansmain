@@ -1,12 +1,42 @@
+'use client'
+
 import { NavbarList } from "@/data/NavbarList";
+import { AllContext } from "@/states/context";
 import { faBars, faEnvelope, faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
+import { useParams, usePathname, useRouter } from "next/navigation";
+import { useContext, useEffect } from "react";
 
 
 
 const Navbar = () => {
+
+    const {dashboardPage, setDashboardPage} = useContext(AllContext)
+  
+    const pathname = usePathname();
+
+    if(pathname.startsWith("/dashboard"))
+
+        return (
+            <div>
+                
+            </div>
+        )
+
+    useEffect(()=>{
+        if(pathname.startsWith("/dashboard")){
+            setDashboardPage(true)
+        }else{
+            setDashboardPage(false)
+        }
+
+    },[])
+
+    
+    
+
     return (
         <div className='Navbar'>
             {/* mobile navbar  */}

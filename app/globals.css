@@ -19,6 +19,10 @@ body{
   @apply text-[15px] text-neutral-500 font-semibold;
 }
 
+.topspace{
+  @apply mt-[85px] lg:mt-[10vh]
+}
+
 
 
 

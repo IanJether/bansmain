@@ -9,7 +9,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 function AboutComp() {
   return (
-    <div className='AboutComp'>
+    <div className='AboutComp topspace'>
 
       <Header page="About" pagehead="About us" />
 

@@ -10,7 +10,7 @@ import { getLink } from "@/data/getLink";
 
 function BlogsComp() {
     return (
-        <div className='BlogsComp'>
+        <div className='BlogsComp topspace'>
 
             <Header page="Blogs" pagehead="Blogs" />
 

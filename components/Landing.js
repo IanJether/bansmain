@@ -14,7 +14,7 @@ import { TeamList } from "@/data/team";
 
 function Landing() {
     return (
-        <div className='Landing'>
+        <div className='Landing topspace'>
 
     
 

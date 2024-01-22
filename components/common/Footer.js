@@ -1,3 +1,5 @@
+'use client'
+
 import { NavbarList } from "@/data/NavbarList";
 import { getLink } from "@/data/getLink";
 import { servicesList } from "@/data/services";
@@ -7,8 +9,20 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 function Footer() {
+
+    const pathname = usePathname();
+
+    if(pathname.startsWith("/dashboard"))
+        return (
+            <div>
+                
+            </div>
+        )
+    
+
   return (
   
     <div className='Footer'>
