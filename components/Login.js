@@ -9,6 +9,8 @@ import { collection } from "firebase/firestore"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
+import SigninCard from "./auth/SigninCard"
+import Link from "next/link"
 
 
 function Login() {
@@ -29,7 +31,7 @@ function Login() {
                 const user = userCredential.user;
 
 
-                router.push('/')
+                router.push('/dashboard')
 
             })
             .catch((error) => {
@@ -43,31 +45,29 @@ function Login() {
 
 
     return (
-        <div className='Signin topspace'>
+        <div className='Signin lg:h-screen flex flex-col-reverse  lg:flex-row p-[30px]'>
 
-            <div className="h-[600px] lg:h-[90vh] w-full relative">
+            <div className="lg:w-[50%] w-full flex flex-col gap-[0px] pad lg:h-full">
 
-
-                <Image className="h-full w-full z-30" height={1000} width={1000} src="/images/backgrounds/wave.svg" alt="" />
-
-                <div className="sectiononelogin z-10 absolute bg-gray-100 flex items-center justify-center h-full w-full top-[0px] ">
-
-                    <div className="logincard  bg-white rounded-[5px] flex flex-col gap-[10px] p-[40px] w-[80%] lg:w-[400px]  border shadow-md">
-
-                        {/* <h2 className="font-semibold capitalize text-center text-[24px] text-blue-500">Welcome Back</h2> */}
-                        <label className="labellogin" htmlFor="">Email Address</label>
-                        <input className="inputlogin" type="email" onChange={(e) => setEmail(e.target.value)} />
-                        <label className="labellogin" htmlFor="">Password</label>
-                        <input className="inputlogin" type="password" onChange={(e) => setPassword(e.target.value)} />
-                        <p className="text-orange-500 text-[13px] text-center hover:underline cursor-pointer">Forgot password ?</p>
-                        <button onClick={submitUser} className="bg-orange-500 mx-auto text-white w-[170px] h-[50px] rounded-[5px]  mt-[5px]">Sign in</button>
-
-                    </div>
-
+                <div className="lg:h-[13%] hidden  lg:flex items-center">
+                    <Link href="/"> <Image className="h-[100px] w-[110px] object-contain " height={2000} width={2000} src="/images/logoone.png" alt="" /> </Link>
                 </div>
 
+                <div className="lg:h-[74%] mt-[20px] lg:mt-[0] flex items-center w-full">
+                    <SigninCard />
+                </div>
+
+                <div className="lg:h-[13%] mt-[36px] lg:mt-[0] text-center lg:text-left flex flex-col gap-[0px] justify-center text-[12px] font-semibold text-gray-500">
+                    <p>By Sign Up you agree to our <Link className="text-gray-900 hover:underline" href="">Terms and Conditions</Link></p>
+                    <p> &copy; Bans Protection Services 2024</p>
+                </div>
 
             </div>
+
+            <div className="lg:w-[50%] h-[200px] lg:h-full">
+                <Image priority className="h-full filter rr brightness-[70%] w-full object-cover" height={2500} width={2500} src="/images/one.jpg" alt="" />
+            </div>
+
 
 
         </div>

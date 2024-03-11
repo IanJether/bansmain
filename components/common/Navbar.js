@@ -34,6 +34,13 @@ const Navbar = () => {
 
     },[])
 
+    const Pathname = usePathname()
+    
+    if (Pathname === '/login' || Pathname === '/signup' || Pathname.startsWith('/dashboard') == true) {
+        return null;
+    }
+
+
     
     
 

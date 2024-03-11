@@ -1,4 +1,4 @@
-import MainDash from "@/components/dashboard/MainDash";
+import MainDash from "@/components/dashboard/common/MainDash";
 
 function dashboard() {
   return (
