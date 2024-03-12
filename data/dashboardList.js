@@ -1,6 +1,6 @@
 
 
-import { faDesktop, faDollar, faEnvelopeOpen, faHome, faInbox, faPieChart, faPlus, faPrint, faSignOut } from "@fortawesome/free-solid-svg-icons"
+import { faDesktop, faDollar, faEnvelopeOpen, faHome, faInbox, faPieChart, faPlus, faPrint, faSignOut, faUser } from "@fortawesome/free-solid-svg-icons"
 
 
 
@@ -15,12 +15,22 @@ export const dashboardList = [
     {
         name:"Services",
         link: "/dashboard/services",
-        icon: faDollar
+        icon: faPieChart
     },
     {
         name:"Messages",
         link: "/dashboard/messages",
-        icon: faPieChart
+        icon: faEnvelopeOpen
+    },
+    {
+        name:"Reviews",
+        link: "/dashboard/reviews",
+        icon: faInbox
+    },
+    {
+        name:"Employees",
+        link: "/dashboard/employees",
+        icon: faUser
     },
     {
         name:"Contacts",
