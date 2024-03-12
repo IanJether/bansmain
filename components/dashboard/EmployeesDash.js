@@ -37,8 +37,8 @@ function Employeesdash() {
 
                                     </div>
                                     <div className="p-[20px] text-center">
-                                        <p className="font-semibold text-[18px] text-primary">Ian Jether</p>
-                                        <p className="font-semibold text-sec text-[14px]">Managing Director</p>
+                                        <p className="font-semibol text-[18px] text-primary">Ian Jether</p>
+                                        <p className="font-semibol text-sec text-[14px]">Managing Director</p>
                                     </div>
                                  
 

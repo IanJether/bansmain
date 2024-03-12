@@ -37,7 +37,7 @@ function ServicesDash() {
                   </div>
 
                 
-                  <h2 className="font-semibold mt-[10px] text-[18px] text-primary">{items.name}</h2>
+                  <h2 className="font-semibol mt-[10px] text-[18px] text-primary">{items.name}</h2>
 
                   {/* <p className="font-semibold text-[15px] text-sec mt-[10px]">By {items.author}</p> */}
 

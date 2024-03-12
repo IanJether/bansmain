@@ -32,10 +32,10 @@ function MessagesDash() {
                         return(
                             <div key={index} className="mappedBlogs w-full h-[95px] border-b-[2px] p-[15px]">
                                 <div className="flex justify-between">
-                                    <h3 className="font-semibold text-[17px] text-primary">Ian Jether</h3>
+                                    <h3 className="font-semibol text-[17px] text-primary">Ian Jether</h3>
                                     <p className="font-semibold text-neutral-500">23/6/24</p>
                                 </div>
-                                <p className="h-[24px] text-neutral-600 mt-[5px] overflow-hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ut dolore doloribus, ex velit eum quis iste a reprehenderit facilis commodi cumque itaque nisi temporibus veniam debitis minima! Nam, culpa.</p>
+                                <p className="h-[24px] text-[15px] text-neutral-600 mt-[5px] overflow-hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ut dolore doloribus, ex velit eum quis iste a reprehenderit facilis commodi cumque itaque nisi temporibus veniam debitis minima! Nam, culpa.</p>
 
                             </div>
                         )

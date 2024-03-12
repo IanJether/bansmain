@@ -35,11 +35,11 @@ function BlogsDash() {
 
                                     </div>
 
-                                    <h3 className="mt-[20px] font-semibold text-neutral-600">{items.date}</h3>
+                                    <h3 className="mt-[20px] font-semibol text-neutral-600">{items.date}</h3>
 
-                                    <h2 className="font-semibold mt-[10px] text-[17px] text-primary">{items.title}</h2>
+                                    <h2 className="font-semibol mt-[10px] text-[17px] text-primary">{items.title}</h2>
 
-                                    <p className="font-semibold text-[15px] text-sec mt-[10px]">By {items.author}</p>
+                                    <p className="font-semibol text-[15px] text-sec mt-[10px]">By {items.author}</p>
 
                                 </div>
                             )

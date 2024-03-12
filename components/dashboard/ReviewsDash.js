@@ -40,8 +40,8 @@ function ReviewsDash() {
 
                                         </div>
                                         <div>
-                                            <p className="font-semibold text-primary ">Ian Jether</p>
-                                            <p className="font-semibold text-[14px] text-sec">Fineteklabs</p>
+                                            <p className="font-semibol text-primary ">Ian Jether</p>
+                                            <p className="font-semibol text-[14px] text-sec">Fineteklabs</p>
                                             <p className="text-[14px]">Managing Director</p>
                                         </div>
                                     </div>

@@ -34,7 +34,7 @@ function NavDashComp() {
 
               <FontAwesomeIcon className="w-[35px] h-[35px] shrink-0 text-[16px]" icon={items.icon} />
 
-              <h2 onClick={items.function} className="capitalize w-[70px] font-semibold ">{items.name}</h2>
+              <h2 onClick={items.function} className="capitalize w-[70px] font-semibo ">{items.name}</h2>
 
             </div> </Link>
           )
@@ -44,7 +44,7 @@ function NavDashComp() {
 
           <FontAwesomeIcon className="w-[35px] h-[35px] shrink-0 text-[16px]" icon={faSignOut} />
 
-          <h2 className="capitalize w-[70px] font-semibold ">Sign Out</h2>
+          <h2 className="capitalize w-[70px] font-semibo ">Sign Out</h2>
 
         </div>
 
