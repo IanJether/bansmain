@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MainDash from "./common/MainDash";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { BlogsList } from "@/data/blogs";
+import Link from "next/link";
 
 
 
@@ -22,7 +23,7 @@ function Employeesdash() {
                     </div>
 
 
-                    <button className="button1 w-[200px]">Add New Employee</button>
+                  <Link href="/dashboard/employees/addemployee">  <button className="button1 w-[200px]">Add New Employee</button> </Link>
                 </div>
 
                 <div className=" h-[78vh] border-b-[1px]  pb-[50px] w-full rr mt-[25px] overflow-scroll no-scrollbar">

@@ -1,11 +1,20 @@
+'use client'
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MainDash from "./common/MainDash";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { BlogsList } from "@/data/blogs";
 import { servicesList } from "@/data/services";
+import Link from "next/link";
+
+import { getLink } from "@/data/getLink";
+import { useRouter } from "next/navigation";
 
 
 function ServicesDash() {
+
+  const router = useRouter();
+
   return (
     <MainDash>
       <div className='ServicesDash'>
@@ -22,7 +31,7 @@ function ServicesDash() {
           </div>
 
 
-          <button className="button1 w-[200px]">Add New Service</button>
+         <Link href="/dashboard/services/addservices"> <button className="button1 w-[200px]">Add New Service</button> </Link>
         </div>
 
         <div className=" h-[78vh] border-b-[1px]  pb-[50px] w-full rr mt-[25px] overflow-scroll no-scrollbar">
@@ -30,8 +39,10 @@ function ServicesDash() {
           <div className=" flex flex-wrap gap-[2.6vw]">
             {servicesList.map((items, index) => {
 
+              const address = "/dashboard/services/" + getLink(items.name)
+
               return (
-                <div key={index} className="w-[31%] p-[20px] shadow-md border bg-white rr">
+                <div onClick={()=>router.push(address)} key={index} className="w-[31%] cursor-pointer p-[20px] shadow-md border bg-white rr">
                   <div className="bg-gray-100 h-[250px] rr">
 
                   </div>

@@ -28,7 +28,7 @@ function BlogDashdetails() {
                 <div className="h-[78vh] border-b-[1px] w-full rr mt-[25px] overflow-scroll no-scrollbar">
 
                     <div className="flex gap-[20px]">
-                        <div className="bg-white shrink-0 rr h-[400px] w-[50%] shadow-md">
+                        <div className="bg-white shrink-0 rr h-[400px] w-[50%] shadow-sm">
 
                         </div>
                         <div className="flex flex-col gap-[20px]">

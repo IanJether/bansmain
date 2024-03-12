@@ -1,10 +1,17 @@
+'use client'
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MainDash from "./common/MainDash";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { BlogsList } from "@/data/blogs";
+import { useRouter } from "next/navigation";
+import { getLink } from "@/data/getLink";
 
 
 function MessagesDash() {
+
+    const router = useRouter();
+
     return (
         <MainDash>
             <div className='MessagesDash'>
@@ -29,8 +36,10 @@ function MessagesDash() {
 
                     {BlogsList.map((items,index)=>{
 
+                        const address = "/dashboard/messages/" + getLink(items.title)
+
                         return(
-                            <div key={index} className="mappedBlogs w-full h-[95px] border-b-[2px] p-[15px]">
+                            <div onClick={()=>router.push(address)} key={index} className="mappedBlogs cursor-pointer w-full h-[95px] border-b-[2px] p-[15px]">
                                 <div className="flex justify-between">
                                     <h3 className="font-semibol text-[17px] text-primary">Ian Jether</h3>
                                     <p className="font-semibold text-neutral-500">23/6/24</p>

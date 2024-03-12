@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MainDash from "./common/MainDash";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { BlogsList } from "@/data/blogs";
+import Link from "next/link";
 
 
 
@@ -22,7 +23,7 @@ function ReviewsDash() {
                     </div>
 
 
-                    <button className="button1 w-[200px]">Add New Review</button>
+                    <Link href="/dashboard/reviews/addreview"> <button className="button1 w-[200px]">Add New Review</button> </Link>
                 </div>
 
 
@@ -33,7 +34,7 @@ function ReviewsDash() {
 
                             return (
                                 <div key={index} className="w-[31%] p-[20px] shadow-md border bg-white rr">
-                                    <p className="text-neutral-600 italic">" Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, harum assumenda perspiciatis amet, numquam soluta veritatis, ab obcaecati nesciunt  "</p>
+                                    <p className="text-neutral-500 italic">" Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, harum assumenda perspiciatis amet, numquam soluta veritatis, ab obcaecati nesciunt  "</p>
 
                                     <div className="mt-[30px] flex gap-[10px] items-center">
                                         <div className="h-[85px] w-[85px] bg-gray-100 rounded-full">
