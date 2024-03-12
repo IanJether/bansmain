@@ -26,11 +26,11 @@ function BlogsDash() {
 
                 <div className=" h-[78vh] border-b-[1px]  pb-[50px] w-full rr mt-[25px] overflow-scroll no-scrollbar">
 
-                    <div className=" flex flex-wrap gap-[40px]">
+                    <div className=" flex flex-wrap gap-[2.6vw]">
                         {BlogsList.map((items, index) => {
 
                             return (
-                                <div key={index} className="w-[30.4%] p-[20px] shadow-md border bg-white rr">
+                                <div key={index} className="w-[31%] p-[20px] shadow-md border bg-white rr">
                                     <div className="bg-gray-100 h-[250px] rr">
 
                                     </div>
