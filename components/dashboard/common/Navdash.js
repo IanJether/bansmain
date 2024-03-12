@@ -22,14 +22,14 @@ function NavDashComp() {
       <div className=" w-full h-[130px] flex items-center justify-center">
         <Link href="/"> <Image className="h-[100px] w-[110px] object-contain " height={2000} width={2000} src="/images/logoone.png" alt="" /> </Link>
       </div>
-      <div className="flex flex-col items-cente px-[10px] mt-[50px] gap-[15px]">
+      <div className="flex flex-col items-cente px-[10px] mt-[40px] gap-[15px]">
         {dashboardList.map((items, index) => {
 
 
 
           return (
             <Link href={items.link} >   <div className={`mappednavDash flex h-[40px] items-center gap-[5px]
-            ${items.link == pathname ? 'bg-orange-100  rr text-sec shadow-md' : ''}  
+            ${pathname.startsWith(items.link) ? 'bg-orange-100  rr text-sec shadow-md' : ''}  
             flex transition ease-in-out duration-500`}>
 
               <FontAwesomeIcon className="w-[35px] h-[35px] shrink-0 text-[16px]" icon={items.icon} />

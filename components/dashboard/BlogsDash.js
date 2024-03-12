@@ -1,10 +1,18 @@
+'use client'
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MainDash from "./common/MainDash";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { BlogsList } from "@/data/blogs";
+import Link from "next/link";
+import { getLink } from "@/data/getLink";
+import { useRouter } from "next/navigation";
 
 
 function BlogsDash() {
+
+    const router = useRouter()
+
     return (
         <MainDash>
             <div className='BlogsDash  '>
@@ -21,7 +29,7 @@ function BlogsDash() {
                     </div>
 
 
-                    <button className="button1 w-[200px]">Add New Blog</button>
+                  <Link href="/dashboard/blogs/addblog">  <button className="button1 w-[200px]">Add New Blog</button> </Link>
                 </div>
 
                 <div className=" h-[78vh] border-b-[1px]  pb-[50px] w-full rr mt-[25px] overflow-scroll no-scrollbar">
@@ -29,15 +37,16 @@ function BlogsDash() {
                     <div className=" flex flex-wrap gap-[2.6vw]">
                         {BlogsList.map((items, index) => {
 
+                            const address = "/dashboard/blogs/" + getLink(items.title)
                             return (
-                                <div key={index} className="w-[31%] p-[20px] shadow-md border bg-white rr">
+                                <div onClick={()=>router.push(address)} key={index} className="w-[31%] cursor-pointer p-[20px] shadow-md border bg-white rr">
                                     <div className="bg-gray-100 h-[250px] rr">
 
                                     </div>
 
                                     <h3 className="mt-[20px] font-semibol text-neutral-600">{items.date}</h3>
 
-                                    <h2 className="font-semibol mt-[10px] text-[17px] text-primary">{items.title}</h2>
+                                    <h2 className="font-semibol mt-[10px] text-[17px] text-primary hover:underline">{items.title}</h2>
 
                                     <p className="font-semibol text-[15px] text-sec mt-[10px]">By {items.author}</p>
 
