@@ -1,12 +1,19 @@
+'use client'
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MainDash from "./common/MainDash";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { BlogsList } from "@/data/blogs";
 import Link from "next/link";
+import getReviews from "@/db/reviews/fetchReviews";
+import Image from "next/image";
 
 
 
 function ReviewsDash() {
+
+    const { isLoading, reviewsData } = getReviews();
+
     return (
         <MainDash>
             <div className='ReviewsDash'>
@@ -28,30 +35,37 @@ function ReviewsDash() {
 
 
                 <div className=" h-[78vh] border-b-[1px]  pb-[50px] w-full rr mt-[25px] overflow-scroll no-scrollbar">
+                    {isLoading ?
+                        <div className="h-full w-full flex items-center justify-center">
+                            <Image className='h-[100px] w-[100px]' height={500} width={500} priority src="/images/loader.gif" alt='' />
+                        </div>
+                        :
+                        <div className=" flex flex-wrap gap-[2.6vw]">
+                            {reviewsData.map((items, index) => {
 
-                    <div className=" flex flex-wrap gap-[2.6vw]">
-                        {BlogsList.map((items, index) => {
+                                return (
+                                    <div key={index} className="w-[31%] p-[20px] shadow-md border bg-white rr">
+                                        <p className="text-neutral-500 italic">"{items.review}"</p>
 
-                            return (
-                                <div key={index} className="w-[31%] p-[20px] shadow-md border bg-white rr">
-                                    <p className="text-neutral-500 italic">" Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, harum assumenda perspiciatis amet, numquam soluta veritatis, ab obcaecati nesciunt  "</p>
-
-                                    <div className="mt-[30px] flex gap-[10px] items-center">
-                                        <div className="h-[85px] w-[85px] bg-gray-100 rounded-full">
-
+                                        <div className="mt-[30px] flex gap-[10px] items-center">
+                                            <div className="h-[85px] w-[85px] bg-gray-100 rounded-full overflow-hidden">
+                                                <Image className='h-full w-full object-cover' height={500} width={500} priority src={items.imageURL} alt='' />
+                                            </div>
+                                            <div>
+                                                <p className="font-semibol text-primary ">{items.name}</p>
+                                                <p className="font-semibol text-[14px] text-sec">{items.company}</p>
+                                                <p className="text-[14px]">{items.position}</p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <p className="font-semibol text-primary ">Ian Jether</p>
-                                            <p className="font-semibol text-[14px] text-sec">Fineteklabs</p>
-                                            <p className="text-[14px]">Managing Director</p>
-                                        </div>
+
                                     </div>
+                                )
+                            })}
 
-                                </div>
-                            )
-                        })}
+                        </div>
+                    }
 
-                    </div>
+
 
                 </div>
 

@@ -1,3 +1,5 @@
+
+
 import { Inter } from 'next/font/google'
 import './globals.css'
 import './output.css'
@@ -5,7 +7,9 @@ import Navbar from '@/components/common/Navbar'
 import Head from 'next/head'
 import Footer from '@/components/common/Footer'
 import { usePathname } from 'next/navigation'
-import { AllContextProvider } from '@/states/context'
+import { AllContext, AllContextProvider } from '@/states/context'
+import Image from 'next/image'
+import { useContext } from 'react'
 
 
 // import Navbar from '@/common/Navbar'
@@ -21,7 +25,6 @@ export default function RootLayout({ children }) {
 
   
 
-  
 
   return (
     <AllContextProvider>
@@ -32,6 +35,7 @@ export default function RootLayout({ children }) {
           <div className="">
             {children}
           </div>
+
 
           <Footer />
 

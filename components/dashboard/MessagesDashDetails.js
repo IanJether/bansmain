@@ -26,7 +26,7 @@ function MessagesDashDetails() {
                     <p className="text-neutral-700">Thursday 27th february 2024</p>
                 </div>
 
-                <div className="w-full p-[30px] bg-white rr mt-[30px] shadow-sm">
+                <div className="w-[50%] p-[30px] bg-white rr mt-[30px] shadow-sm">
                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur quibusdam doloribus in eos! Libero vel et laborum quia, sequi adipisci velit impedit provident suscipit, quis natus optio deleniti, eveniet sint!</p>
                 </div>
 
