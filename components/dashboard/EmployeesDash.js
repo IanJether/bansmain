@@ -46,7 +46,7 @@ function Employeesdash() {
                             {employeesData.map((items, index) => {
 
                                 return (
-                                    <div key={index} className="w-[31%] shadow-md border bg-white rr">
+                                    <div key={index} className="w-[22.4%] shadow-md border bg-white rr">
 
                                         <div className="h-[300px] bg-gray-200 overflow-hidden">
                                         <Image className='h-full w-full object-cover' height={500} width={500} priority src={items.imageURL} alt='' />

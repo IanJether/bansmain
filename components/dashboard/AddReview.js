@@ -141,7 +141,7 @@ function AddReview() {
                 </div>
 
 
-              {globalLoading && <LoaderComp/>}
+              
 
 
             </div>

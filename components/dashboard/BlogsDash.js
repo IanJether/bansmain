@@ -7,11 +7,15 @@ import { BlogsList } from "@/data/blogs";
 import Link from "next/link";
 import { getLink } from "@/data/getLink";
 import { useRouter } from "next/navigation";
+import getBlogs from "@/db/blogs/fetchBlogs";
+import Image from "next/image";
 
 
 function BlogsDash() {
 
     const router = useRouter()
+
+    const { isLoading, blogsData } = getBlogs();
 
     return (
         <MainDash>
@@ -29,32 +33,39 @@ function BlogsDash() {
                     </div>
 
 
-                  <Link href="/dashboard/blogs/addblog">  <button className="button1 w-[200px]">Add New Blog</button> </Link>
+                    <Link href="/dashboard/blogs/addblog">  <button className="button1 w-[200px]">Add New Blog</button> </Link>
                 </div>
 
                 <div className=" h-[78vh] border-b-[1px]  pb-[50px] w-full rr mt-[25px] overflow-scroll no-scrollbar">
 
-                    <div className=" flex flex-wrap gap-[2.6vw]">
-                        {BlogsList.map((items, index) => {
+                    {isLoading ?
+                        <div className="h-full w-full flex items-center justify-center">
+                            <Image className='h-[100px] w-[100px]' height={500} width={500} priority src="/images/loader.gif" alt='' />
+                        </div>
+                        :
+                        <div className=" flex flex-wrap gap-[2.6vw]">
 
-                            const address = "/dashboard/blogs/" + getLink(items.title)
-                            return (
-                                <div onClick={()=>router.push(address)} key={index} className="w-[31%] cursor-pointer p-[20px] shadow-md border bg-white rr">
-                                    <div className="bg-gray-100 h-[250px] rr">
+                            {blogsData.map((items, index) => {
+
+                                const address = "/dashboard/blogs/" + items.id
+                                return (
+                                    <div onClick={() => router.push(address)} key={index} className="w-[31%] cursor-pointer p-[20px] shadow-md border bg-white rr">
+                                        <div className="bg-gray-100 h-[250px] rr">
+                                            <Image className="w-full h-full object-cover" height={600} width={600} src={items.imageURL} alt="" />
+                                        </div>
+
+                                        <h3 className="mt-[20px] font-semibol text-neutral-600">27 december 2022</h3>
+
+                                        <h2 className="font-semibol mt-[10px] text-[17px] text-primary hover:underline">{items.title}</h2>
+
+                                        <p className="font-semibol text-[15px] text-sec mt-[10px]">By {items.author}</p>
 
                                     </div>
+                                )
+                            })}
 
-                                    <h3 className="mt-[20px] font-semibol text-neutral-600">{items.date}</h3>
-
-                                    <h2 className="font-semibol mt-[10px] text-[17px] text-primary hover:underline">{items.title}</h2>
-
-                                    <p className="font-semibol text-[15px] text-sec mt-[10px]">By {items.author}</p>
-
-                                </div>
-                            )
-                        })}
-
-                    </div>
+                        </div>
+                    }
 
                 </div>
 

@@ -22,9 +22,9 @@ function AddEmployee() {
     const [name, setName] = useState("");
     const [position, setPosition] = useState("");
 
-    const {globalLoading, setGlobalLoading, resetValues, setResetValues} = useContext(AllContext);
+    const { globalLoading, setGlobalLoading, resetValues, setResetValues } = useContext(AllContext);
 
-    
+
     const fileChange = (event) => {
 
         const inp = document.getElementById("imageinput");
@@ -36,19 +36,19 @@ function AddEmployee() {
 
     }
 
-    const handleSubmit = () =>{
-        handlePostEmployee(file,name,position,setGlobalLoading,setResetValues,resetValues)
+    const handleSubmit = () => {
+        handlePostEmployee(file, name, position, setGlobalLoading, setResetValues, resetValues)
     }
 
 
-    useEffect(()=>{
+    useEffect(() => {
 
         setName("")
         setPosition("")
         setFile('none')
         setImgprev('')
 
-    },[resetValues])
+    }, [resetValues])
 
     return (
         <MainDash>
@@ -63,12 +63,12 @@ function AddEmployee() {
                     <h2 className="text-[24px] w-[200px] font-semibold text-primary">  Add Employee</h2>
 
 
-                    <button onClick={()=>handleSubmit()} className="button1 w-[200px]">Submit</button>
+                    <button onClick={() => handleSubmit()} className="button1 w-[200px]">Submit</button>
                 </div>
 
                 <div className=" h-[78vh] border-b-[1px] bg-white shadow-sm  p-[30px] w-full rr mt-[25px] overflow-scroll no-scrollbar">
 
-                <div className="flex flex-col gap-[5px]">
+                    <div className="flex flex-col gap-[5px]">
                         <label className="font-semibold text-neutral-600" htmlFor="">Image</label>
                         <div className="flex gap-[50px]">
 
@@ -91,13 +91,13 @@ function AddEmployee() {
                     <div className="flex justify-between gap-[25px] mt-[25px]">
                         <div className="flex flex-col w-full">
                             <label className="font-semibold text-neutral-600" htmlFor="">Name</label>
-                            <input value={name} onChange={(e)=>setName(e.target.value)} className="inputContact" type="text" />
+                            <input value={name} onChange={(e) => setName(e.target.value)} className="inputContact" type="text" />
                             {/* <p className="mt-[3px] text-red-500 text-[13px]">*6 words max</p> */}
 
                         </div>
                         <div className="flex flex-col w-full">
                             <label className="font-semibold text-neutral-600" htmlFor="">Position</label>
-                            <input value={position} onChange={(e)=>setPosition(e.target.value)} className="inputContact" type="text" />
+                            <input value={position} onChange={(e) => setPosition(e.target.value)} className="inputContact" type="text" />
 
                         </div>
                         <div className="flex flex-col w-full">
@@ -127,7 +127,7 @@ function AddEmployee() {
 
                 </div>
 
-                {globalLoading && <LoaderComp/>}
+                
 
             </div>
         </MainDash>

@@ -6,14 +6,14 @@ import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "../config";
 
 
-const getBlogs = () => {
+const getServices = () => {
 
   const [isLoading, setIsLoading] = useState(true);
-  const [blogsData, setBlogsData] = useState([]);
+  const [servicesData, setServicesData] = useState([]);
   
 
   useEffect(() => {
-    const colRef = collection(db, 'blogs')
+    const colRef = collection(db, 'services')
     const q = query(colRef, orderBy('createdAt', 'desc'));
     const unsubscribe = onSnapshot(q, (docsSnap) => {
       let data = [];
@@ -21,13 +21,13 @@ const getBlogs = () => {
         data.push({ ...doc.data(), id: doc.id });
       });
       setIsLoading(false);
-      setBlogsData(data);
+      setServicesData(data);
     });
 
     return () => unsubscribe(); // Clean up the listener when component unmounts
   }, []);
 
-  return { isLoading, blogsData };
+  return { isLoading, servicesData };
 };
 
-export default getBlogs;
+export default getServices;

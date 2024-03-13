@@ -9,11 +9,16 @@ import Link from "next/link";
 
 import { getLink } from "@/data/getLink";
 import { useRouter } from "next/navigation";
+import getServices from "@/db/services/fetchService";
+import Image from "next/image";
 
 
 function ServicesDash() {
 
   const router = useRouter();
+
+  const { isLoading, servicesData } = getServices();
+
 
   return (
     <MainDash>
@@ -31,32 +36,40 @@ function ServicesDash() {
           </div>
 
 
-         <Link href="/dashboard/services/addservices"> <button className="button1 w-[200px]">Add New Service</button> </Link>
+          <Link href="/dashboard/services/addservices"> <button className="button1 w-[200px]">Add New Service</button> </Link>
         </div>
 
         <div className=" h-[78vh] border-b-[1px]  pb-[50px] w-full rr mt-[25px] overflow-scroll no-scrollbar">
 
-          <div className=" flex flex-wrap gap-[2.6vw]">
-            {servicesList.map((items, index) => {
+          {isLoading ?
+            <div className="h-full w-full flex items-center justify-center">
+              <Image className='h-[100px] w-[100px]' height={500} width={500} priority src="/images/loader.gif" alt='' />
+            </div>
+            :
 
-              const address = "/dashboard/services/" + getLink(items.name)
+            <div className=" flex flex-wrap gap-[2.6vw]">
+              {servicesData.map((items, index) => {
 
-              return (
-                <div onClick={()=>router.push(address)} key={index} className="w-[31%] cursor-pointer p-[20px] shadow-md border bg-white rr">
-                  <div className="bg-gray-100 h-[250px] rr">
+                const address = "/dashboard/services/" + items.id
+
+                return (
+                  <div onClick={() => router.push(address)} key={index} className="w-[31%] cursor-pointer p-[20px] shadow-md border bg-white rr">
+                    <div className="bg-gray-100 h-[250px] rr">
+                      <Image className="h-full w-full object-cover" height={700} width={700} src={items.imageURL} alt="" />
+                    </div>
+
+
+                    <h2 className="font-semibol mt-[10px] text-[18px] text-primary">{items.title}</h2>
+
+                    {/* <p className="font-semibold text-[15px] text-sec mt-[10px]">By {items.author}</p> */}
 
                   </div>
+                )
+              })}
 
-                
-                  <h2 className="font-semibol mt-[10px] text-[18px] text-primary">{items.name}</h2>
+            </div>
 
-                  {/* <p className="font-semibold text-[15px] text-sec mt-[10px]">By {items.author}</p> */}
-
-                </div>
-              )
-            })}
-
-          </div>
+          }
 
         </div>
 

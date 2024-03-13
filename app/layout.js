@@ -4,15 +4,11 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import './output.css'
 import Navbar from '@/components/common/Navbar'
-import Head from 'next/head'
 import Footer from '@/components/common/Footer'
-import { usePathname } from 'next/navigation'
-import { AllContext, AllContextProvider } from '@/states/context'
-import Image from 'next/image'
-import { useContext } from 'react'
+import { AllContextProvider } from '@/states/context'
+import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 
-// import Navbar from '@/common/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
 
