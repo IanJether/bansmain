@@ -12,7 +12,7 @@ import draftToHtml from "draftjs-to-html";
 import Image from "next/image";
 import { AllContext } from "@/states/context";
 import { handlePostBlogs } from "@/db/blogs/postBlogs";
-
+const [showEditor, setShowEditor] = useState('')
 
 
 
@@ -60,6 +60,12 @@ function Addblog() {
         setFile('none')
 
     }, [resetValues])
+
+    useEffect(() => {
+
+        setShowEditor(true)
+
+    }, [])
 
 
     return (
@@ -141,14 +147,17 @@ function Addblog() {
 
                         <label className="font-semibold text-neutral-600" htmlFor="">Blog</label>
 
-                        <Editor
-
-                            editorState={editorState}
-                            toolbarClassName="toolbarClassName no-scrollbar border border-blu"
-                            wrapperClassName="wrapperClassName no-scrollbar h-[650px]  mt-[10px]"
-                            editorClassName="editorClassName no-scrollbar border border-nuetral-700 p-[10px]"
-                            onEditorStateChange={onEditorStateChange}
-                        />
+                        {showEditor ?
+                            <Editor
+                                editorState={editorState}
+                                toolbarClassName="toolbarClassName no-scrollbar border border-blu"
+                                wrapperClassName="wrapperClassName no-scrollbar h-[650px]  mt-[10px]"
+                                editorClassName="editorClassName no-scrollbar border border-nuetral-700 p-[10px]"
+                                onEditorStateChange={onEditorStateChange}
+                            />
+                            :
+                            null
+                        }
 
 
                     </div>

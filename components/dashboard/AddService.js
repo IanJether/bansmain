@@ -21,6 +21,7 @@ function AddServiceDash() {
     const [file, setFile] = useState("none");
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
+    const [showEditor, setShowEditor] = useState('')
 
     const router = useRouter();
 
@@ -37,7 +38,7 @@ function AddServiceDash() {
 
     const handleSubmit = () => {
 
-        handlePostServices(file,title,description,draftToHtml(convertToRaw(editorState.getCurrentContent())), setGlobalLoading, setResetValues, resetValues)
+        handlePostServices(file, title, description, draftToHtml(convertToRaw(editorState.getCurrentContent())), setGlobalLoading, setResetValues, resetValues)
     }
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -55,6 +56,13 @@ function AddServiceDash() {
         setFile('none')
 
     }, [resetValues])
+
+
+    useEffect(() => {
+
+        setShowEditor(true)
+
+    }, [])
 
     return (
         <MainDash>
@@ -135,13 +143,20 @@ function AddServiceDash() {
 
                         <label className="font-semibold text-neutral-600" htmlFor="">Blog</label>
 
-                        <Editor
-                            editorState={editorState}
-                            toolbarClassName="toolbarClassName no-scrollbar border border-blu"
-                            wrapperClassName="wrapperClassName no-scrollbar h-[650px]  mt-[10px]"
-                            editorClassName="editorClassName no-scrollbar border border-nuetral-700 p-[10px]"
-                            onEditorStateChange={onEditorStateChange}
-                        />
+
+                        {showEditor ?
+                            <Editor
+                                editorState={editorState}
+                                toolbarClassName="toolbarClassName no-scrollbar border border-blu"
+                                wrapperClassName="wrapperClassName no-scrollbar h-[650px]  mt-[10px]"
+                                editorClassName="editorClassName no-scrollbar border border-nuetral-700 p-[10px]"
+                                onEditorStateChange={onEditorStateChange}
+                            />
+                            :
+                            null
+                        }
+
+
 
                     </div>
 
