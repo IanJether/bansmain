@@ -34,7 +34,7 @@ function Addblog() {
 
     const onEditorStateChange = (editorStatee) => {
         setEditorState(editorStatee);
-        console.log(editorState)
+      
     };
 
 

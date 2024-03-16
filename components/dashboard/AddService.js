@@ -45,7 +45,7 @@ function AddServiceDash() {
 
     const onEditorStateChange = (editorStatee) => {
         setEditorState(editorStatee);
-        console.log(editorState)
+      
     };
 
     useEffect(() => {
