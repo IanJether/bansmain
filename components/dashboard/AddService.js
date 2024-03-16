@@ -21,7 +21,7 @@ function AddServiceDash() {
     const [file, setFile] = useState("none");
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
-    const [showEditor, setShowEditor] = useState('')
+    const [showEditor, setShowEditor] = useState(false)
 
     const router = useRouter();
 

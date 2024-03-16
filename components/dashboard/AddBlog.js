@@ -12,7 +12,7 @@ import draftToHtml from "draftjs-to-html";
 import Image from "next/image";
 import { AllContext } from "@/states/context";
 import { handlePostBlogs } from "@/db/blogs/postBlogs";
-const [showEditor, setShowEditor] = useState('')
+
 
 
 
@@ -27,6 +27,8 @@ function Addblog() {
     const [description, setDescription] = useState("")
     const [imgprev, setImgprev] = useState("");
     const [file, setFile] = useState("none");
+    const [showEditor, setShowEditor] = useState(false)
+
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
@@ -60,6 +62,8 @@ function Addblog() {
         setFile('none')
 
     }, [resetValues])
+
+
 
     useEffect(() => {
 
