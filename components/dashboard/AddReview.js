@@ -81,10 +81,10 @@ function AddReview() {
                         <label className="font-semibold text-neutral-600" htmlFor="">Image</label>
                         <div className="flex gap-[50px]">
 
-                            <div className="overflow-hidden flex items-center justify-center h-[200px] w-[32%] bg-gray-100 rr">
+                            <div className="overflow-hidden flex items-center justify-center h-[150px] w-[150px] rounded-full overflow-hidden bg-gray-100 ">
                                 {imgprev !== "" ?
                                     <Image className="h-full w-full object-contain" height={200} width={200} src={imgprev} alt="" /> :
-                                    <Image className=" h-[50px]" height={300} width={300} src="/images/noImage.svg" alt="" />}
+                                    <Image className=" h-[40px]" height={300} width={300} src="/images/noImage.svg" alt="" />}
                             </div>
                             <div className="text-[24px] cursor-pointer bg-white text-neutral-700 border-2 border-neutral-400 rounded-[5px] h-[50px] w-[50px] font-light mb-[10px] flex items-center justify-center">
                                 <input id="imageinput" onChange={fileChange} className="hidden" type="file" accept="image/jpeg, image/png, image/jpg" name="imageinput" />

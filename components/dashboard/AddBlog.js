@@ -1,6 +1,6 @@
 'use client'
 
-import Link from "next/link";
+
 import MainDash from "./common/MainDash";
 import { useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -150,14 +150,10 @@ function Addblog() {
                             onEditorStateChange={onEditorStateChange}
                         />
 
-                    
-
-
-
-
 
                     </div>
 
+                        <textarea className="h-[600px] w-[50%]" value={draftToHtml(convertToRaw(editorState.getCurrentContent()))} ></textarea>
                 </div>
 
 

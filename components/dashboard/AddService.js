@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import MainDash from "./common/MainDash";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faCheck, faPlus } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 import { handlePostServices } from "@/db/services/postServices";
