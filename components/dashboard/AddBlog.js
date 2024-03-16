@@ -5,15 +5,20 @@ import MainDash from "./common/MainDash";
 import { useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faCheck, faPlus } from "@fortawesome/free-solid-svg-icons";
-import { Editor } from "react-draft-wysiwyg";
+// import { Editor } from "react-draft-wysiwyg";
 import { useContext, useEffect, useState } from "react";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 import Image from "next/image";
 import { AllContext } from "@/states/context";
 import { handlePostBlogs } from "@/db/blogs/postBlogs";
+import dynamic from "next/dynamic";
 
 
+
+const Editor = dynamic(
+    ()=> import('react-draft-wysiwyg').then(mod => mod.Editor),{ssr:false } 
+)
 
 
 function Addblog() {

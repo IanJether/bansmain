@@ -8,10 +8,14 @@ import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 import { handlePostServices } from "@/db/services/postServices";
 import { EditorState, convertToRaw } from "draft-js";
-import { Editor } from "react-draft-wysiwyg";
 import { AllContext } from "@/states/context";
 import draftToHtml from "draftjs-to-html";
+import dynamic from "next/dynamic";
 
+
+const Editor = dynamic(
+    ()=> import('react-draft-wysiwyg').then(mod => mod.Editor),{ssr:false } 
+)
 
 function AddServiceDash() {
 
