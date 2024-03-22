@@ -1,5 +1,5 @@
 
-import Addblog from "@/components/dashboard/AddBlog";
+import Addblog from "@/components/dashboard/blogs/AddBlog";
 
 
 function addBlogPage() {

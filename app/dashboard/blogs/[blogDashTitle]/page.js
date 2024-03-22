@@ -1,4 +1,4 @@
-import BlogDashdetails from "@/components/dashboard/BlogDashDetails";
+import BlogDashdetails from "@/components/dashboard/blogs/BlogDashDetails";
 
 
 function blogDashDetailsPage() {

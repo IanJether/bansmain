@@ -1,4 +1,4 @@
-import MessagesDash from "@/components/dashboard/MessagesDash";
+import MessagesDash from "@/components/dashboard/messages/MessagesDash";
 
 
 function messagesDashPage() {

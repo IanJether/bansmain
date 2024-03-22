@@ -1,8 +1,8 @@
 'use client'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import MainDash from "./common/MainDash";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import MainDash from "../common/MainDash";
+import { faEdit, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { BlogsList } from "@/data/blogs";
 import Link from "next/link";
 import getEmployees from "@/db/employees/fetchEmployees";
@@ -45,8 +45,10 @@ function Employeesdash() {
                         <div className=" flex flex-wrap gap-[2.6vw]">
                             {employeesData.map((items, index) => {
 
+                                const address = '/dashboard/employees/' + items.id
+
                                 return (
-                                    <div key={index} className="w-[22.4%] shadow-md border bg-white rr">
+                                    <div key={index} className="w-[22.4%] shadow-md border bg-white rr relative">
 
                                         <div className="h-[300px] bg-gray-200 overflow-hidden">
                                         <Image className='h-full w-full object-cover' height={500} width={500} priority src={items.imageURL} alt='' />
@@ -55,6 +57,9 @@ function Employeesdash() {
                                             <p className="font-semibol text-[18px] text-primary">{items.name}</p>
                                             <p className="font-semibol text-sec text-[14px]">{items.position}</p>
                                         </div>
+                                        
+
+                                       <Link href={address}> <button className="bg-primary/50 hover:bg-primary absolute bottom-[10px] right-[10%] text-white h-[30px] w-[30px] rr text-[10px]"><FontAwesomeIcon icon={faEdit}/></button> </Link>
 
 
                                     </div>

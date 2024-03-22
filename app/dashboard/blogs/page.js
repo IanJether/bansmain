@@ -1,4 +1,4 @@
-import BlogsDash from "@/components/dashboard/BlogsDash";
+import BlogsDash from "@/components/dashboard/blogs/BlogsDash";
 
 
 function blogsdash() {

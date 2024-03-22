@@ -1,29 +1,33 @@
 'use client'
 
 import { useRouter } from "next/navigation";
-import MainDash from "./common/MainDash";
+import MainDash from "../common/MainDash";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faCheck, faPlus } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
-import LoaderComp from "../Loader";
+import { handlePostServices } from "@/db/services/postServices";
+import { EditorState, convertToRaw } from "draft-js";
 import { AllContext } from "@/states/context";
-import { handlePostEmployee } from "@/db/employees/postEmployees";
+import draftToHtml from "draftjs-to-html";
+import dynamic from "next/dynamic";
 
 
+const Editor = dynamic(
+    ()=> import('react-draft-wysiwyg').then(mod => mod.Editor),{ssr:false } 
+)
 
-function AddEmployee() {
-
-    const router = useRouter();
-
-    const [imgprev, setImgprev] = useState("");
-    const [file, setFile] = useState("none");
-    const [name, setName] = useState("");
-    const [position, setPosition] = useState("");
+function AddServiceDash() {
 
     const { globalLoading, setGlobalLoading, resetValues, setResetValues } = useContext(AllContext);
 
+    const [imgprev, setImgprev] = useState("");
+    const [file, setFile] = useState("none");
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
+    const [showEditor, setShowEditor] = useState(false)
+
+    const router = useRouter();
 
     const fileChange = (event) => {
 
@@ -37,22 +41,36 @@ function AddEmployee() {
     }
 
     const handleSubmit = () => {
-        handlePostEmployee(file, name, position, setGlobalLoading, setResetValues, resetValues)
+
+        handlePostServices(file, title, description, draftToHtml(convertToRaw(editorState.getCurrentContent())), setGlobalLoading, setResetValues, resetValues)
     }
+
+    const [editorState, setEditorState] = useState(EditorState.createEmpty());
+
+    const onEditorStateChange = (editorStatee) => {
+        setEditorState(editorStatee);
+      
+    };
+
+    useEffect(() => {
+
+        setTitle("")
+        setDescription('')
+        setImgprev('')
+        setFile('none')
+
+    }, [resetValues])
 
 
     useEffect(() => {
 
-        setName("")
-        setPosition("")
-        setFile('none')
-        setImgprev('')
+        setShowEditor(true)
 
-    }, [resetValues])
+    }, [])
 
     return (
         <MainDash>
-            <div className='AddEmployee relative'>
+            <div className='AddServiceDash relative'>
 
                 <p onClick={() => router.back()} className="text-primary hover:text-sec2 hover:underline cursor-pointer absolute top-[-18px]">
                     <span className="mr-[6px]"><FontAwesomeIcon icon={faAngleLeft} /></span>
@@ -60,7 +78,7 @@ function AddEmployee() {
                 </p>
 
                 <div className="flex justify-between items-center">
-                    <h2 className="text-[24px] w-[200px] font-semibold text-primary">  Add Employee</h2>
+                    <h2 className="text-[24px] w-[200px] font-semibold text-primary">  Add Service</h2>
 
 
                     <button onClick={() => handleSubmit()} className="button1 w-[200px]">Submit</button>
@@ -72,7 +90,7 @@ function AddEmployee() {
                         <label className="font-semibold text-neutral-600" htmlFor="">Image</label>
                         <div className="flex gap-[50px]">
 
-                            <div className="overflow-hidden flex items-center justify-center h-[330px] w-[32%] bg-gray-100 rr">
+                            <div className="overflow-hidden flex items-center justify-center h-[200px] w-[32%] bg-gray-100 rr">
                                 {imgprev !== "" ?
                                     <Image className="h-full w-full object-contain" height={200} width={200} src={imgprev} alt="" /> :
                                     <Image className=" h-[50px]" height={300} width={300} src="/images/noImage.svg" alt="" />}
@@ -90,48 +108,67 @@ function AddEmployee() {
 
                     <div className="flex justify-between gap-[25px] mt-[25px]">
                         <div className="flex flex-col w-full">
-                            <label className="font-semibold text-neutral-600" htmlFor="">Name</label>
-                            <input value={name} onChange={(e) => setName(e.target.value)} className="inputContact" type="text" />
-                            {/* <p className="mt-[3px] text-red-500 text-[13px]">*6 words max</p> */}
+                            <label className="font-semibold text-neutral-600" htmlFor="">Title</label>
+                            <input value={title} onChange={(e) => setTitle(e.target.value)} className="inputContact" type="text" />
+                            <p className="mt-[3px] text-red-500 text-[13px]">*6 words max</p>
 
                         </div>
                         <div className="flex flex-col w-full">
-                            <label className="font-semibold text-neutral-600" htmlFor="">Position</label>
-                            <input value={position} onChange={(e) => setPosition(e.target.value)} className="inputContact" type="text" />
-
-                        </div>
-                        <div className="flex flex-col w-full">
-                            {/* <label className="font-semibold text-neutral-600" htmlFor="">Position</label>
+                            {/* <label className="font-semibold text-neutral-600" htmlFor="">Author</label>
                             <input className="inputContact" type="text" /> */}
+
+                        </div>
+                        <div className="flex flex-col w-full">
+                            {/* <label className="font-semibold text-neutral-600" htmlFor="">Email</label>
+                            <input value="ben@bansprotection.co.ke" className="inputContact" type="text" /> */}
 
                         </div>
                     </div>
                     <div className="flex justify-between gap-[25px] mt-[25px]">
                         <div className="flex flex-col w-full">
-                            {/* <label className="font-semibold text-neutral-600" htmlFor="">Description</label>
-                            <textarea className="bg-gray-100 rr h-[] mt-[10px] p-[10px] h-[200px] outline-none border-sec focus:border hover:border" type="text" />
-                            <p className="mt-[3px] text-red-500 text-[13px]">*10 words max</p> */}
+                            <label className="font-semibold text-neutral-600" htmlFor="">Description</label>
+                            <textarea value={description} onChange={(e) => setDescription(e.target.value)} className="bg-gray-100 rr h-[] mt-[10px] p-[10px] h-[200px] outline-none border-sec focus:border hover:border" type="text" />
+                            <p className="mt-[3px] text-red-500 text-[13px]">*10 words max</p>
 
                         </div>
                         <div className="flex flex-col w-full">
                             {/* <label className="font-semibold text-neutral-600" htmlFor="">Author</label>
-        <input className="inputContact" type="text" /> */}
+                            <input className="inputContact" type="text" /> */}
 
                         </div>
                         <div className="flex flex-col w-full">
                             {/* <label className="font-semibold text-neutral-600" htmlFor="">Email</label>
-        <input value="ben@bansprotection.co.ke" className="inputContact" type="text" /> */}
+                            <input value="ben@bansprotection.co.ke" className="inputContact" type="text" /> */}
 
                         </div>
                     </div>
 
-                </div>
+                    <div className="mt-[40px] mb-[100px] w-[70%]">
 
-                
+                        <label className="font-semibold text-neutral-600" htmlFor="">Blog</label>
+
+
+                        {showEditor ?
+                            <Editor
+                                editorState={editorState}
+                                toolbarClassName="toolbarClassName no-scrollbar border border-blu"
+                                wrapperClassName="wrapperClassName no-scrollbar h-[650px]  mt-[10px]"
+                                editorClassName="editorClassName no-scrollbar border border-nuetral-700 p-[10px]"
+                                onEditorStateChange={onEditorStateChange}
+                            />
+                            :
+                            null
+                        }
+
+
+
+                    </div>
+
+                </div>
 
             </div>
         </MainDash>
     );
 }
 
-export default AddEmployee;
+export default AddServiceDash;

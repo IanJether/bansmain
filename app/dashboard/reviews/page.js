@@ -1,4 +1,4 @@
-import ReviewsDash from "@/components/dashboard/ReviewsDash";
+import ReviewsDash from "@/components/dashboard/reviews/ReviewsDash";
 
 
 function reviewDashPage() {

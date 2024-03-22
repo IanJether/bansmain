@@ -1,4 +1,4 @@
-import ServiceDashDetails from "@/components/dashboard/ServiceDashDetails";
+import ServiceDashDetails from "@/components/dashboard/services/ServiceDashDetails";
 
 
 function servicesDetailsDashPage() {

@@ -1,7 +1,7 @@
 'use client'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import MainDash from "./common/MainDash";
+import MainDash from "../common/MainDash";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { BlogsList } from "@/data/blogs";
 import Link from "next/link";
@@ -50,7 +50,7 @@ function BlogsDash() {
                                 const address = "/dashboard/blogs/" + items.id
                                 return (
                                     <div onClick={() => router.push(address)} key={index} className="w-[31%] cursor-pointer p-[20px] shadow-md border bg-white rr">
-                                        <div className="bg-gray-100 h-[250px] rr">
+                                        <div className="bg-gray-100 h-[250px] rr overflow-hidden">
                                             <Image className="w-full h-full object-cover" height={600} width={600} src={items.imageURL} alt="" />
                                         </div>
 

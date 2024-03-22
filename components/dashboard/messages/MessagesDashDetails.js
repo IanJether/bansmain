@@ -1,6 +1,6 @@
 'use client'
 import { useRouter } from "next/navigation";
-import MainDash from "./common/MainDash";
+import MainDash from "../common/MainDash";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";

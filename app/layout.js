@@ -19,13 +19,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 
-  
+
 
 
   return (
     <AllContextProvider>
       <html lang="en">
-      
+
         <body className={` ${inter.className}`}>
           <Navbar />
           <div className="">

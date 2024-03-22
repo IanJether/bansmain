@@ -1,7 +1,7 @@
 'use client'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import MainDash from "./common/MainDash";
+import MainDash from "../common/MainDash";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { BlogsList } from "@/data/blogs";
 import { servicesList } from "@/data/services";

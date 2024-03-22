@@ -1,4 +1,4 @@
-import AddReview from "@/components/dashboard/AddReview";
+import AddReview from "@/components/dashboard/reviews/AddReview";
 
 
 

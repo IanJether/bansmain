@@ -1,4 +1,4 @@
-import Employeesdash from "@/components/dashboard/EmployeesDash";
+import Employeesdash from "@/components/dashboard/employees/EmployeesDash";
 
 
 function employeesPageDash() {

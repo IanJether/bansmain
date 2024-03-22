@@ -1,4 +1,4 @@
-import ServicesDash from "@/components/dashboard/servicesDash";
+import ServicesDash from "@/components/dashboard/services/servicesDash";
 
 
 function servicesDashPage() {

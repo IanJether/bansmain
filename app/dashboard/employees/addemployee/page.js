@@ -1,4 +1,5 @@
-import AddEmployee from "@/components/dashboard/AddEmployee";
+import AddEmployee from "@/components/dashboard/employees/AddEmployee";
+
 
 
 

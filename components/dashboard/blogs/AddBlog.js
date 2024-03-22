@@ -1,7 +1,7 @@
 'use client'
 
 
-import MainDash from "./common/MainDash";
+import MainDash from "../common/MainDash";
 import { useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faCheck, faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -171,7 +171,7 @@ function Addblog() {
 
                     </div>
 
-                        <textarea className="h-[600px] w-[50%]" value={draftToHtml(convertToRaw(editorState.getCurrentContent()))} ></textarea>
+                        {/* <textarea className="h-[600px] w-[50%]" value={draftToHtml(convertToRaw(editorState.getCurrentContent()))} ></textarea> */}
                 </div>
 
 
