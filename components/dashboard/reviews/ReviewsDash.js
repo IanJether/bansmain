@@ -2,17 +2,46 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MainDash from "../common/MainDash";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { BlogsList } from "@/data/blogs";
 import Link from "next/link";
 import getReviews from "@/db/reviews/fetchReviews";
 import Image from "next/image";
+import { useContext, useState } from "react";
+import { AllContext } from "@/states/context";
+import ConfirmationBox from "@/components/common/ConfirmBox";
+import { deleteDoc, doc } from "firebase/firestore";
+import { db } from "@/db/config";
 
 
 
 function ReviewsDash() {
 
     const { isLoading, reviewsData } = getReviews();
+
+    const [showConfirmation, setShowConfirmation] = useState(false);
+    const [id,setid] = useState(null)
+
+    const { setGlobalLoading } = useContext(AllContext);
+
+    const handleCancel = () => {
+        setShowConfirmation(false)
+    }
+
+    const exitClick = () => {
+
+        setGlobalLoading(true)
+        setShowConfirmation(false)
+
+        deleteDoc(doc(db, 'reviews' , id )).then(()=>{
+            setGlobalLoading(false)
+            
+        }).catch(()=>{
+            alert('Error')
+            setGlobalLoading(false)
+        })
+       
+    }
 
     return (
         <MainDash>
@@ -47,7 +76,7 @@ function ReviewsDash() {
                                     <div key={index} className="w-[31%] p-[20px] shadow-md border bg-white rr">
                                         <p className="text-neutral-500 italic">"{items.review}"</p>
 
-                                        <div className="mt-[30px] flex gap-[10px] items-center">
+                                        <div className="mt-[30px] flex gap-[10px] items-center relative">
                                             <div className="h-[85px] w-[85px] bg-gray-100 rounded-full overflow-hidden">
                                                 <Image className='h-full w-full object-cover' height={500} width={500} priority src={items.imageURL} alt='' />
                                             </div>
@@ -55,6 +84,10 @@ function ReviewsDash() {
                                                 <p className="font-semibol text-primary ">{items.name}</p>
                                                 <p className="font-semibol text-[14px] text-sec">{items.company}</p>
                                                 <p className="text-[14px]">{items.position}</p>
+                                            </div>
+
+                                            <div className="absolute bottom-[20px] right-0">
+                                                <button onClick={()=>{setShowConfirmation(true);setid(items.id)}} className="bg-blue-800/50 hover:bg-blue-800 text-white text-[11px] h-[30px] w-[30px] rr"><FontAwesomeIcon icon={faTrash}/></button>
                                             </div>
                                         </div>
 
@@ -68,6 +101,14 @@ function ReviewsDash() {
 
 
                 </div>
+
+                {showConfirmation && (
+                        <ConfirmationBox
+                            onConfirm={exitClick}
+                            onCancel={handleCancel}
+                            message="Are you sure you want to delete this review ?"
+                        />
+                    )}
 
             </div>
         </MainDash>

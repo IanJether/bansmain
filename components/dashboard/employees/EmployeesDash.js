@@ -2,17 +2,47 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MainDash from "../common/MainDash";
-import { faEdit, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faSearch, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { BlogsList } from "@/data/blogs";
 import Link from "next/link";
 import getEmployees from "@/db/employees/fetchEmployees";
 import Image from "next/image";
+import ConfirmationBox from "@/components/common/ConfirmBox";
+import { useContext, useState } from "react";
+import { AllContext } from "@/states/context";
+import { deleteDoc, doc } from "firebase/firestore";
+import { db } from "@/db/config";
 
 
 
 function Employeesdash() {
 
     const { isLoading, employeesData } = getEmployees();
+
+    const [showConfirmation, setShowConfirmation] = useState(false);
+    const [id,setid] = useState(null)
+
+    const { setGlobalLoading } = useContext(AllContext);
+
+
+    const handleCancel = () => {
+        setShowConfirmation(false)
+    }
+
+    const exitClick = () => {
+
+        setGlobalLoading(true)
+        setShowConfirmation(false)
+
+        deleteDoc(doc(db, 'employees' , id )).then(()=>{
+            setGlobalLoading(false)
+            
+        }).catch(()=>{
+            alert('Error')
+            setGlobalLoading(false)
+        })
+       
+    }
 
 
     return (
@@ -43,7 +73,7 @@ function Employeesdash() {
                         :
 
                         <div className=" flex flex-wrap gap-[2.6vw]">
-                            {employeesData.map((items, index) => {
+                            {employeesData.map((items, index) => { 
 
                                 const address = '/dashboard/employees/' + items.id
 
@@ -53,14 +83,14 @@ function Employeesdash() {
                                         <div className="h-[300px] bg-gray-200 overflow-hidden">
                                         <Image className='h-full w-full object-cover' height={500} width={500} priority src={items.imageURL} alt='' />
                                         </div>
-                                        <div className="p-[20px] text-center">
+                                        <div className="p-[25px] text-center">
                                             <p className="font-semibol text-[18px] text-primary">{items.name}</p>
                                             <p className="font-semibol text-sec text-[14px]">{items.position}</p>
                                         </div>
                                         
 
-                                       <Link href={address}> <button className="bg-primary/50 hover:bg-primary absolute bottom-[10px] right-[10%] text-white h-[30px] w-[30px] rr text-[10px]"><FontAwesomeIcon icon={faEdit}/></button> </Link>
-
+                                       <Link href={address}> <button className="bg-primary/50 hover:bg-primary absolute bottom-[10px] right-[5%] text-white h-[30px] w-[30px] rr text-[10px]"><FontAwesomeIcon icon={faEdit}/></button> </Link>
+                                       <button onClick={()=>{setShowConfirmation(true);setid(items.id)}} className="bg-red-600/50 hover:bg-red-600 absolute bottom-[10px] left-[5%] text-white h-[30px] w-[30px] rr text-[10px]"><FontAwesomeIcon icon={faTrash}/></button>
 
                                     </div>
                                 )
@@ -71,6 +101,14 @@ function Employeesdash() {
                     }
 
                 </div>
+
+                {showConfirmation && (
+                        <ConfirmationBox
+                            onConfirm={exitClick}
+                            onCancel={handleCancel}
+                            message="Are you sure you want to delete this employee?"
+                        />
+                    )}
 
             </div>
         </MainDash>

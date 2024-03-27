@@ -6,11 +6,19 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { BlogsList } from "@/data/blogs";
 import { useRouter } from "next/navigation";
 import { getLink } from "@/data/getLink";
+import { useContext } from "react";
+import { AllContext } from "@/states/context";
 
 
 function MessagesDash() {
 
     const router = useRouter();
+
+    const {triggerNotification} = useContext(AllContext)
+
+    const handleTest = () =>{
+        triggerNotification('alert','error')
+    }
 
     return (
         <MainDash>
@@ -33,6 +41,8 @@ function MessagesDash() {
                 </div>
 
                 <div className=" h-[78vh] border-b-[1px] bg-white  pb-[50px] w-full rr mt-[25px] overflow-scroll no-scrollbar">
+
+                    {/* <button onClick={()=>handleTest()} className="button1">Testing</button> */}
 
                     {BlogsList.map((items,index)=>{
 

@@ -28,9 +28,6 @@ function BlogDashdetails() {
 
     const address = "/dashboard/blogs/" + params.blogDashTitle + '/edit'
 
-    const handleExit = () => {
-        setShowConfirmation(true)
-    }
 
     const handleCancel = () => {
         setShowConfirmation(false)

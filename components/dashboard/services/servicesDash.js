@@ -54,12 +54,12 @@ function ServicesDash() {
 
                 return (
                   <div onClick={() => router.push(address)} key={index} className="w-[31%] cursor-pointer p-[20px] shadow-md border bg-white rr">
-                    <div className="bg-gray-100 h-[250px] rr">
+                    <div className="bg-gray-100 h-[250px] rr overflow-hidden">
                       <Image className="h-full w-full object-cover" height={700} width={700} src={items.imageURL} alt="" />
                     </div>
 
 
-                    <h2 className="font-semibol mt-[10px] text-[18px] text-primary">{items.title}</h2>
+                    <h2 className="font-semibol mt-[10px] text-[18px] text-primary capitalize">{items.title}</h2>
 
                     {/* <p className="font-semibold text-[15px] text-sec mt-[10px]">By {items.author}</p> */}
 

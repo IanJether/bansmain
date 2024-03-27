@@ -7,6 +7,8 @@ import Navbar from '@/components/common/Navbar'
 import Footer from '@/components/common/Footer'
 import { AllContextProvider } from '@/states/context'
 import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import dynamic from 'next/dynamic'
+import Notification from '@/components/common/Notification'
 
 
 
@@ -19,6 +21,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 
+  // const NotificationElement = dynamic(()=> import('../components/common/Notification'),{
+  //   ssr: false,
+  // })
+
+
 
 
 
@@ -26,11 +33,12 @@ export default function RootLayout({ children }) {
     <AllContextProvider>
       <html lang="en">
 
-        <body className={` ${inter.className}`}>
+        <body className={` relative ${inter.className}`}>
           <Navbar />
           <div className="">
             {children}
           </div>
+          <Notification/>
 
           <Footer />
 

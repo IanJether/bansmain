@@ -6,12 +6,21 @@ import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import getSingleService from "@/db/services/fetchSingleService";
 import Image from "next/image";
+import ConfirmationBox from "@/components/common/ConfirmBox";
+import { useContext, useState } from "react";
+import { AllContext } from "@/states/context";
+import { db } from "@/db/config";
+import { deleteDoc, doc } from "firebase/firestore";
 
 
 
 
 
 function ServiceDashDetails() {
+
+    const [showConfirmation, setShowConfirmation] = useState(false);
+
+    const { setGlobalLoading } = useContext(AllContext);
 
     const router = useRouter();
 
@@ -22,6 +31,25 @@ function ServiceDashDetails() {
     console.log(singleServiceData)
 
     const address = "/dashboard/services/" + params.servicesDashTitle + "/edit"
+
+    const handleCancel = () => {
+        setShowConfirmation(false)
+    }
+
+    const exitClick = () => {
+
+        setGlobalLoading(true)
+        setShowConfirmation(false)
+
+        deleteDoc(doc(db, 'services' , params.servicesDashTitle )).then(()=>{
+            setGlobalLoading(false)
+            router.push('/dashboard/services')
+        }).catch(()=>{
+            alert('Error')
+            setGlobalLoading(false)
+        })
+       
+    }
 
 
     return (
@@ -66,7 +94,17 @@ function ServiceDashDetails() {
                             {/* {singleBlogData.blog} */}
                         </div>
 
+                        <button onClick={()=>setShowConfirmation(true)} className="bg-red-600 rr h-[60px] px-[25px] text-white font-semibold my-[20px]">Delete</button>
+
                     </div>
+
+                    {showConfirmation && (
+                        <ConfirmationBox
+                            onConfirm={exitClick}
+                            onCancel={handleCancel}
+                            message="Are you sure you want to delete this service ?"
+                        />
+                    )}
 
                 </div>
             }
