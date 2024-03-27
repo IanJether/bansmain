@@ -23,9 +23,10 @@ const Editor = dynamic(
 
 function Addblog() {
 
+
     const router = useRouter();
 
-    const { globalLoading, setGlobalLoading, resetValues, setResetValues } = useContext(AllContext);
+    const { globalLoading, setGlobalLoading, resetValues, setResetValues, triggerNotification } = useContext(AllContext);
 
     const [title, setTitle] = useState("")
     const [author, setAuthor] = useState("")
@@ -55,7 +56,7 @@ function Addblog() {
     }
 
    const handleSubmit = () => {
-        handlePostBlogs(file,title,author,description,draftToHtml(convertToRaw(editorState.getCurrentContent())), setGlobalLoading, setResetValues, resetValues)
+        handlePostBlogs(file,title,author,description,draftToHtml(convertToRaw(editorState.getCurrentContent())), setGlobalLoading, setResetValues, resetValues, triggerNotification)
     }
 
     useEffect(() => {

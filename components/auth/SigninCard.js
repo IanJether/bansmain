@@ -1,7 +1,45 @@
+import { auth } from "@/db/config";
+import { AllContext } from "@/states/context";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useContext, useState } from "react";
 
 
 function SigninCard() {
+
+    const {triggerNotification} = useContext(AllContext)
+
+    const router = useRouter()
+
+    const [email,setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+
+    const submitUser = () => {
+
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+
+                triggerNotification('success', 'Signin Successfull')
+
+
+                router.push('/dashboard/blogs')
+
+            })
+            .catch((error) => {
+                
+                triggerNotification('error', error.code)
+                console.log(error)
+                // alert('')
+
+                
+            });
+
+    }
+
     return (
         <div className='SigninCard flex flex-col w-full lg:w-[70%] gap-[30px]'>
 
@@ -13,12 +51,12 @@ function SigninCard() {
             <div className="flex flex-col gap-[15px]">
                 <div className="flex flex-col gap-[8px]">
                     <label className="loginlabel" htmlFor="">Email Address</label>
-                    <input className="loginInput" type="text" />
+                    <input value={email} onChange={(e)=>setEmail(e.target.value)} className="loginInput" type="text" />
                 </div>
 
                 <div className="flex flex-col gap-[8px]">
                     <label className="loginlabel" htmlFor="">Password</label>
-                    <input className="loginInput" type="password" />
+                    <input value={password} onChange={(e)=>setPassword(e.target.value)} className="loginInput" type="password" />
                 </div>
             </div>
 
@@ -30,10 +68,10 @@ function SigninCard() {
                 <p className="text-[14px] text-primary font-semibold">Forgot Password ?</p>
             </div>
 
-           <Link href="/dashboard"> <div className="flex items-center justify-between">
-                <button className="h-[55px] text-[14px] bg-sec text-white font-semibold w-[45%] rr">Login</button>
+          <div className="flex items-center justify-between">
+                <button onClick={()=>submitUser()} className="h-[55px] text-[14px] bg-sec text-white font-semibold w-[45%] rr">Login</button>
                 <button className="h-[54px] text-[14px] bg-white text-sec font-semibold w-[45%] rr border-[2px] border-sec">Create Account</button>
-            </div> </Link>
+            </div>
 
 
         </div>

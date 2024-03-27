@@ -6,13 +6,12 @@ import { compressImage } from "../imageCompressor";
 import { db, storage } from "../config";
 
 
-export const handlePostServices = (file, title, description, text, setGlobalLoading, setResetValues, resetValues) => {
+export const handlePostServices = (file, title, description, text, setGlobalLoading, setResetValues, resetValues, triggerNotification) => {
 
  
     if (file === "none" || title === "" || description === "" || text === "" ) {
 
-        alert("Kindly fill all necessary details");// change this to a toast message or something of the sort
-
+        triggerNotification('alert', 'Please fill all fields')
     } else {
         
         setGlobalLoading(true)
@@ -37,8 +36,9 @@ export const handlePostServices = (file, title, description, text, setGlobalLoad
             }).then(() => {
                 setGlobalLoading(false)
                 setResetValues(!resetValues)
+                triggerNotification('success','Service added successfully')
             }).catch((error) => {
-                console.log(error);
+                triggerNotification('error', error.code)
             });
         });
     }

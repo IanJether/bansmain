@@ -22,7 +22,7 @@ function AddEmployee() {
     const [name, setName] = useState("");
     const [position, setPosition] = useState("");
 
-    const { globalLoading, setGlobalLoading, resetValues, setResetValues } = useContext(AllContext);
+    const { globalLoading, setGlobalLoading, resetValues, setResetValues, triggerNotification } = useContext(AllContext);
 
 
     const fileChange = (event) => {
@@ -37,7 +37,7 @@ function AddEmployee() {
     }
 
     const handleSubmit = () => {
-        handlePostEmployee(file, name, position, setGlobalLoading, setResetValues, resetValues)
+        handlePostEmployee(file, name, position, setGlobalLoading, setResetValues, resetValues, triggerNotification)
     }
 
 

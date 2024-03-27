@@ -4,11 +4,11 @@ import { db } from "../config";
 
 
 
-export const handleUpdateService = (title, description, text, setGlobalLoading, setResetValues, resetValues, router, id) => {
+export const handleUpdateService = (title, description, text, setGlobalLoading, setResetValues, resetValues, router, id, triggerNotification) => {
 
-    if (title === "" || description === "" ) {
+    if (title === "" || description === "" || text == '' ) {
 
-        alert('')
+        triggerNotification('alert', 'Please fill all fields')
     } else {
 
         setGlobalLoading(true)
@@ -22,6 +22,7 @@ export const handleUpdateService = (title, description, text, setGlobalLoading, 
         }).then(() => {
             setGlobalLoading(false)
             setResetValues(!resetValues)
+            triggerNotification('success', 'Service Updated')
             router.back()
 
         })

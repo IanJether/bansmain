@@ -28,13 +28,13 @@ function EditEmployee() {
     const [name, setName] = useState("");
     const [position, setPosition] = useState("");
 
-    const { globalLoading, setGlobalLoading, resetValues, setResetValues } = useContext(AllContext);
+    const { globalLoading, setGlobalLoading, resetValues, setResetValues, triggerNotification } = useContext(AllContext);
 
 
 
 
     const handleSubmit = () => {
-        handleUpdateEmployee(name, position, setGlobalLoading, setResetValues, resetValues, router, params.employeeId)
+        handleUpdateEmployee(name, position, setGlobalLoading, setResetValues, resetValues, router, params.employeeId, triggerNotification)
     }
 
 

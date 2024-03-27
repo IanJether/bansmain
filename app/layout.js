@@ -9,6 +9,7 @@ import { AllContextProvider } from '@/states/context'
 import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import dynamic from 'next/dynamic'
 import Notification from '@/components/common/Notification'
+import 'animate.css';
 
 
 

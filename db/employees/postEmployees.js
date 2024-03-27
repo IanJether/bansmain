@@ -6,12 +6,12 @@ import { compressImage } from "../imageCompressor";
 import { db, storage } from "../config";
 
 
-export const handlePostEmployee = (file, name, position, setGlobalLoading, setResetValues, resetValues) => {
+export const handlePostEmployee = (file, name, position, setGlobalLoading, setResetValues, resetValues, triggerNotification) => {
 
  
     if (file === "none" || name === "" || position === "" ) {
 
-        alert("Kindly fill all necessary details");// change this to a toast message or something of the sort
+      triggerNotification('alert', 'Please fill all fields')
 
     } else {
         
@@ -36,8 +36,9 @@ export const handlePostEmployee = (file, name, position, setGlobalLoading, setRe
             }).then(() => {
                 setGlobalLoading(false)
                 setResetValues(!resetValues)
+                triggerNotification('success', 'Employee added')
             }).catch((error) => {
-                console.log(error);
+                triggerNotification('error', error.code)
             });
         });
     }

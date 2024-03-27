@@ -8,9 +8,10 @@ import { signInWithEmailAndPassword } from "firebase/auth"
 import { collection } from "firebase/firestore"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import SigninCard from "./auth/SigninCard"
 import Link from "next/link"
+import { AllContext } from "@/states/context"
 
 
 function Login() {
@@ -22,6 +23,8 @@ function Login() {
 
     const colRef = collection(db, `users`)
 
+    const {triggerNotification} = useContext(AllContext)
+
 
     const submitUser = () => {
 
@@ -30,13 +33,15 @@ function Login() {
                 // Signed in 
                 const user = userCredential.user;
 
+                triggerNotification('success', 'Signin Successfull')
+
 
                 router.push('/dashboard')
 
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
+                
+                triggerNotification('error', error)
 
                 alert('Invalid Credentials')
             });

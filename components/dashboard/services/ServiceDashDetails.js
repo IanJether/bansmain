@@ -20,7 +20,7 @@ function ServiceDashDetails() {
 
     const [showConfirmation, setShowConfirmation] = useState(false);
 
-    const { setGlobalLoading } = useContext(AllContext);
+    const { setGlobalLoading, triggerNotification } = useContext(AllContext);
 
     const router = useRouter();
 
@@ -43,9 +43,10 @@ function ServiceDashDetails() {
 
         deleteDoc(doc(db, 'services' , params.servicesDashTitle )).then(()=>{
             setGlobalLoading(false)
+            triggerNotification('success', 'Service deleted')
             router.push('/dashboard/services')
-        }).catch(()=>{
-            alert('Error')
+        }).catch((error)=>{
+            triggerNotification('error', error)
             setGlobalLoading(false)
         })
        

@@ -36,7 +36,7 @@ function EditBlogsComp() {
 
     const { isLoading, singleBlogData } = getSingleBlog(params.blogDashTitle);
 
-    const { globalLoading, setGlobalLoading, resetValues, setResetValues } = useContext(AllContext);
+    const { globalLoading, setGlobalLoading, resetValues, setResetValues, triggerNotification } = useContext(AllContext);
 
     const [title, setTitle] = useState("")
     const [author, setAuthor] = useState("")
@@ -55,7 +55,7 @@ function EditBlogsComp() {
 
 
     const handleSubmit = () => {
-        handleUpdateBlog(title, author, description, draftToHtml(convertToRaw(editorState.getCurrentContent())), setGlobalLoading, setResetValues, resetValues, router, params.blogDashTitle)
+        handleUpdateBlog(title, author, description, draftToHtml(convertToRaw(editorState.getCurrentContent())), setGlobalLoading, setResetValues, resetValues, router, params.blogDashTitle, triggerNotification)
     }
 
     useEffect(() => {

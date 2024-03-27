@@ -22,7 +22,7 @@ function ReviewsDash() {
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [id,setid] = useState(null)
 
-    const { setGlobalLoading } = useContext(AllContext);
+    const { setGlobalLoading, triggerNotification } = useContext(AllContext);
 
     const handleCancel = () => {
         setShowConfirmation(false)
@@ -35,9 +35,9 @@ function ReviewsDash() {
 
         deleteDoc(doc(db, 'reviews' , id )).then(()=>{
             setGlobalLoading(false)
-            
-        }).catch(()=>{
-            alert('Error')
+            triggerNotification('success', 'Review deleted')
+        }).catch((error)=>{
+            triggerNotification('error', error)
             setGlobalLoading(false)
         })
        

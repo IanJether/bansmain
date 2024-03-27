@@ -23,7 +23,7 @@ const Editor = dynamic(
 
 function EditServiceDash() {
 
-    const { globalLoading, setGlobalLoading, resetValues, setResetValues } = useContext(AllContext);
+    const { globalLoading, setGlobalLoading, resetValues, setResetValues, triggerNotification } = useContext(AllContext);
 
     const params = useParams();
 
@@ -38,7 +38,7 @@ function EditServiceDash() {
 
     const handleSubmit = () => {
 
-        handleUpdateService(title, description, draftToHtml(convertToRaw(editorState.getCurrentContent())), setGlobalLoading, setResetValues, resetValues, router, params.servicesDashTitle)
+        handleUpdateService(title, description, draftToHtml(convertToRaw(editorState.getCurrentContent())), setGlobalLoading, setResetValues, resetValues, router, params.servicesDashTitle, triggerNotification)
     }
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());

@@ -5,11 +5,11 @@ import { db } from "../config";
 
 
 
-export const handleUpdateBlog = (title, author, description, blog, setGlobalLoading, setResetValues, resetValues, router, id) => {
+export const handleUpdateBlog = (title, author, description, blog, setGlobalLoading, setResetValues, resetValues, router, id, triggerNotification) => {
 
     if (title === "" || author === "" || description === "" ) {
 
-        alert('')
+        triggerNotification('alert', 'Please fill all fields')
     } else {
 
         setGlobalLoading(true)
@@ -25,6 +25,7 @@ export const handleUpdateBlog = (title, author, description, blog, setGlobalLoad
             setGlobalLoading(false)
             setResetValues(!resetValues)
             router.back()
+            triggerNotification('success', 'Blog Updated Successfully')
 
         })
 

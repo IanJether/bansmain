@@ -5,12 +5,12 @@ import { compressImage } from "../imageCompressor";
 import { db, storage } from "../config";
 
 
-export const handlePostReview = (file, name, company, position, review, status, setGlobalLoading, setResetValues, resetValues) => {
+export const handlePostReview = (file, name, company, position, review, status, setGlobalLoading, setResetValues, resetValues, triggerNotification) => {
 
  
     if (file === "none" || name === "" || company === "" || position === "" || review === "") {
 
-        alert("Kindly fill all necessary details");// change this to a toast message or something of the sort
+      triggerNotification('alert', 'Please fill all fields')
 
     } else {
         
@@ -38,8 +38,9 @@ export const handlePostReview = (file, name, company, position, review, status, 
             }).then(() => {
                 setGlobalLoading(false)
                 setResetValues(!resetValues)
+                triggerNotification('success', 'Review added')
             }).catch((error) => {
-                console.log(error);
+                triggerNotification('error', error.code)
             });
         });
     }

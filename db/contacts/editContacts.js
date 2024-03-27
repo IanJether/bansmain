@@ -3,11 +3,11 @@ import { db } from "../config"
 
 
 
-export const handleUpdateCompanyContacts = (phone, email, locationName, locationLink, setGlobalLoading, id, setOverlay) => {
+export const handleUpdateCompanyContacts = (phone, email, locationName, locationLink, setGlobalLoading, id, setOverlay,triggerNotification) => {
 
     if (phone == '' || email == '' || locationName == '' || locationLink == '') {
 
-        alert('')
+        triggerNotification('alert', 'Please fill all fields')
     } else {
         setGlobalLoading(true)
 
@@ -21,15 +21,16 @@ export const handleUpdateCompanyContacts = (phone, email, locationName, location
         }).then(() => {
             setGlobalLoading(false)
             setOverlay(false)
+            triggerNotification('success', 'Contacts Updated')
         })
     }
 }
 
 
-export const handleUpdateCompanySocials = (facebookLink, facebookName, instagramName, instagramLink, linkedinName, linkedinLink, twitterName, twitterLink, setGlobalLoading, id, setOverlay) => {
+export const handleUpdateCompanySocials = (facebookLink, facebookName, instagramName, instagramLink, linkedinName, linkedinLink, twitterName, twitterLink, setGlobalLoading, id, setOverlay,triggerNotification) => {
 
     if (facebookLink == '' || facebookName == '' || instagramName == '' || instagramLink == '' || linkedinName == '' || linkedinLink == '' || twitterName == '' || twitterLink == '') {
-        alert('')
+        triggerNotification('alert', 'Please fill all fields')
     } else {
         setGlobalLoading(true)
 
@@ -47,6 +48,7 @@ export const handleUpdateCompanySocials = (facebookLink, facebookName, instagram
         }).then(() => {
             setGlobalLoading(false)
             setOverlay(false)
+            triggerNotification('success', 'Socials Updated')
         })
     }
 }

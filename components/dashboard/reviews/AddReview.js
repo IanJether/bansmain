@@ -20,7 +20,7 @@ function AddReview() {
 
     const router = useRouter()
 
-    const {globalLoading, setGlobalLoading, resetValues, setResetValues} = useContext(AllContext);
+    const {globalLoading, setGlobalLoading, resetValues, setResetValues, triggerNotification} = useContext(AllContext);
 
     const [name, setName] = useState("");
     const [company, setCompany] = useState("");
@@ -42,7 +42,7 @@ function AddReview() {
     }
 
     const handleSubmit = () => {
-        handlePostReview(file, name, company, position, review, status, setGlobalLoading,setResetValues,resetValues)
+        handlePostReview(file, name, company, position, review, status, setGlobalLoading,setResetValues,resetValues, triggerNotification)
     }
 
     useEffect(()=>{

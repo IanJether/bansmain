@@ -19,7 +19,7 @@ const Editor = dynamic(
 
 function AddServiceDash() {
 
-    const { globalLoading, setGlobalLoading, resetValues, setResetValues } = useContext(AllContext);
+    const { globalLoading, setGlobalLoading, resetValues, setResetValues, triggerNotification } = useContext(AllContext);
 
     const [imgprev, setImgprev] = useState("");
     const [file, setFile] = useState("none");
@@ -42,7 +42,7 @@ function AddServiceDash() {
 
     const handleSubmit = () => {
 
-        handlePostServices(file, title, description, draftToHtml(convertToRaw(editorState.getCurrentContent())), setGlobalLoading, setResetValues, resetValues)
+        handlePostServices(file, title, description, draftToHtml(convertToRaw(editorState.getCurrentContent())), setGlobalLoading, setResetValues, resetValues, triggerNotification)
     }
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());

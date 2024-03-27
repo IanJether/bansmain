@@ -3,11 +3,11 @@ import { db } from "../config";
 
 
 
-export const handleUpdateEmployee = (name, position, setGlobalLoading, setResetValues, resetValues, router, id) => {
+export const handleUpdateEmployee = (name, position, setGlobalLoading, setResetValues, resetValues, router, id,  triggerNotification) => {
 
     if (name === "" || position === "") {
 
-        alert('')
+        triggerNotification('alert', 'Please fill all fields')
     } else {
 
         setGlobalLoading(true)
@@ -20,6 +20,7 @@ export const handleUpdateEmployee = (name, position, setGlobalLoading, setResetV
         }).then(() => {
             setGlobalLoading(false)
             setResetValues(!resetValues)
+            triggerNotification('success', 'Employee Updated')
             router.back()
 
         })

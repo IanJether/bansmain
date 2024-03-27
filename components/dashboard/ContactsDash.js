@@ -16,7 +16,7 @@ function ContactsDash() {
 
     const {isLoading, contactData} = getContacts()
 
-    const { setGlobalLoading } = useContext(AllContext);
+    const { setGlobalLoading, triggerNotification } = useContext(AllContext);
 
 
     const [contact1, setContact1] = useState(false)
@@ -66,11 +66,11 @@ function ContactsDash() {
     },[contactData])
 
     const handleSubmitContacts = () =>{
-        handleUpdateCompanyContacts(phone,email,locationName,locationLink,setGlobalLoading,'company',setContact1)
+        handleUpdateCompanyContacts(phone,email,locationName,locationLink,setGlobalLoading,'company',setContact1, triggerNotification)
     }
 
     const handleSubmitSocials = () =>{
-        handleUpdateCompanySocials(facebookLink,facebookName,instagramName,instagramLink,linkedinName,linkedinLink,twitterName,twitterLink,setGlobalLoading,'socials',setContact2)
+        handleUpdateCompanySocials(facebookLink,facebookName,instagramName,instagramLink,linkedinName,linkedinLink,twitterName,twitterLink,setGlobalLoading,'socials',setContact2, triggerNotification)
     }
 
 

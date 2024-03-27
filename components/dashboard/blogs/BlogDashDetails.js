@@ -18,7 +18,7 @@ function BlogDashdetails() {
 
     const [showConfirmation, setShowConfirmation] = useState(false);
 
-    const { setGlobalLoading } = useContext(AllContext);
+    const { setGlobalLoading , triggerNotification} = useContext(AllContext);
 
     const router = useRouter();
 
@@ -40,6 +40,7 @@ function BlogDashdetails() {
 
         deleteDoc(doc(db, 'blogs' , params.blogDashTitle )).then(()=>{
             setGlobalLoading(false)
+            triggerNotification('success','Blog Deleted Successfully')
             router.push('/dashboard/blogs')
         }).catch(()=>{
             alert('Error')
